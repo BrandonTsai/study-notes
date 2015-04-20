@@ -1,4 +1,3 @@
-w
 Shell Scrips
 ============
 
