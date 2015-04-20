@@ -109,7 +109,8 @@ done
 Output Log
 ----------
 
-refer: http://stackoverflow.com/questions/18460186/writing-outputs-to-log-file-and-console
+refer: 
+- http://stackoverflow.com/questions/18460186/writing-outputs-to-log-file-and-console- http://www.tldp.org/LDP/abs/html/io-redirection.html
 
 ```bash
 exec 3>&1 1>>${LOG_FILE} 2>&1
