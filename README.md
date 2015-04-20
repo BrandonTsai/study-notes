@@ -1,2 +1,4 @@
-# study-notes
-My study notes
+# Brandon's Study Notes
+
+Gitbooks format study notes
+
