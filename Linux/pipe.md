@@ -9,16 +9,47 @@ refer: http://linux.vbird.org/linux_basic/0320bash.php#pipe
 
 | Option | Action   |
 |--------|----------|
-| -i     | 忽略大小寫	 |
-| -n     | 顯示行數   |
+| -i     | 忽略大小寫|
+| -n     | 顯示行數  |
 | -v abc | 過濾 abc  |
-| -A x   | 後面x行   |
-| -B y   | 前面y行   |
+| -A x   | 後面x列   |
+| -B y   | 前面y列   |
+
+
+### Cut
+
+
+| usage                       | notes                |
+|-----------------------------|----------------------|
+| cut -d '分隔字元' -f fields  | field從 1 開始計數     |
+| cut -c A-B                  | 取每一行第Ａ到第Ｂ個字元 |
+ 
+
+```
+$ cat >> phone_book << EOF
+> tsungyi 03-1234567
+> brandon 03-7654321
+> batman 05-1234321
+> EOF
+
+$ cat phone_book | cut -d ' ' -f 1
+tsungyi
+brandon
+batman
+
+$ cat phone_book | cut -c 1-5
+tsung
+brand
+batma
+
+```
 
 
 ### AWK
 
 refer: http://blog.xuite.net/mb1016.flying/linux/28111008-linux+shell+awk+語法
+
+進階版的cut
 
 基本用法：
 
@@ -150,5 +181,27 @@ batman 05-1234321
 ```
 
 
+## 重導向
+
+### tee [-ai] [file]
+
+tee 會同時將資料流分送到檔案去與螢幕 (screen)；而輸出到螢幕的，其實就是 stdout ，可以讓下個指令繼續處理喔！
+
+| optioon | notes |
+| ------- | ------|
+| -a      | Append the output to the files rather than overwriting them. |
+| -i      | Ignore the SIGINT signal. |
 
 
+```
+
+$ cat phone_book | tee -a new_book | grep brandon
+brandon 03-7654321
+
+$ cat new_book 
+tsungyi 03-1234567
+brandon 03-7654321
+batman 05-1234321
+
+
+```

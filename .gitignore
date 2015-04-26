@@ -17,3 +17,6 @@ _book
 
 # ignore the files in PRIVATE folder.
 PRIVATE/**
+
+# ignore Mou file
+.DS_Store
