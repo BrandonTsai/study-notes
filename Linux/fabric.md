@@ -17,6 +17,18 @@ Fabric uses the following syntax for passing arguments to tasks:
  fab task:foo=99,bar=True
 ```
 
+Run Command
+-----------
+
+```py
+from fabric.api import run, sudo
+
+def task(pkg=''):
+     sudo('apt-get update')
+     sudo('apt-get install %s' % pkg)
+```
+
+
 Transmit Files
 --------------
 
@@ -30,12 +42,9 @@ def task(something=''):
 Set config via Template
 ------------------------
 
-use **fabric.contrib.files.upload_template()** to set up config
+use **[fabric.contrib.files.upload_template()](http://docs.fabfile.org/en/latest/api/contrib/files.html)** to set up config
 
-refer: http://docs.fabfile.org/en/latest/api/contrib/files.html
-
-
-### Use template with [Python string interpolation formatting](https://docs.python.org/2/library/stdtypes.html#string-formatting)
+#### (1) Use template with [Python string interpolation formatting](https://docs.python.org/2/library/stdtypes.html#string-formatting)
 
 conf/rsyslog/myapp.conf
 
@@ -58,7 +67,7 @@ def set_rsyslog():
     sudo('service rsyslog restart')
 ```
 
-### Use template with [Jinja2](http://jinja.pocoo.org/docs/dev/) (Suggest)
+#### (2) Use template with [Jinja2](http://jinja.pocoo.org/docs/dev/) (Suggest)
 
 conf/rsyslog/myapp.conf
 
