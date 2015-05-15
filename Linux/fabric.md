@@ -89,3 +89,35 @@ def set_rsyslog():
     upload_template(source, target, context, use_jinja=True, use_sudo=True)
     sudo('service rsyslog restart')
 ```
+
+Get Fabric Environment Setting
+------------------------------
+
+fabfile.py
+
+use fabric environment as template context
+
+```py
+from fabric.api import env
+
+def set_rsyslog():
+    source = 'conf/rsyslog/myapp.conf'
+    target = '/etc/rsyslog.d/15-myapp.conf'
+    upload_template(source, target, env, use_jinja=True, use_sudo=True)
+    sudo('service rsyslog restart')
+```
+
+Add custom runtime fabric env configuration.
+
+```bash
+$ cat >> myfabric_rc << EOF
+logfile = myapp.log
+EOF
+
+
+$ fab -u ＜UserID＞ -p ＜Password＞ -H ＜Target IP＞ -c myfabric_rc set_rsyslog
+```
+
+
+
+

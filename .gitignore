@@ -18,5 +18,9 @@ _book
 # ignore the files in PRIVATE folder.
 PRIVATE/**
 
-# ignore Mou file
+# Remove Draft Files
+.tmp
+
+# Remove Mac Desktop Services Store
 .DS_Store
+
