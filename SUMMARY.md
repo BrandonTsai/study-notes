@@ -11,5 +11,5 @@
 * Other
 	* [Git](Others/git.md)
 	* [Openstack](OpenStack/instance.md)
-
+	* [DevOps](Others/DevOps.md)
 
