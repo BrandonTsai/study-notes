@@ -35,42 +35,49 @@ Design Thinking & UX + Business Model Canvas
 
 
 Project Management Tools:
+```
 * Trello
 * Redmine
 * Slack
-
+```
 Document Tools:
+```
 * AsciiDoc
 * Gitbook
 * Readthedoc
-
+```
 Bug Tracking System:
+```
 * Mantis
+```
 
 ### Code
 
 Hacking:
+```
 * Vim
 * XCode
 * Eclipise
-
+```
 
 Version Control:
+```
 * Git
 * Github
 * Gitlab
 * Gerrit
-
+```
 
 ### Build & Unit Testing:
 
 Continuous Integration tools:
+```
 * Jenkins 
 * Maven 
 * Ant 
 * Gradle 
 * CircleCI
-
+```
 ### Release & Deployment
 
 Continous Deployment to different environment:
@@ -84,41 +91,50 @@ Continous Deployment to different environment:
 
 
 Infrastructure as a Service
+```
 * Amazon Web Services 
 * Rackspace
 * Cloud Foundry
 * Azure
 * OpenStack
+```
 
 Virtualization Platforms
+```
 * VMware 
 * KVM
 * Xen
 * VirtualBox 
 * Vagrant 
+```
 
 Containerization Tools
+```
 * LXC
 * Solaris Containers
 * Docker 
+```
 
 Linux OS Installation
+```
 * Kickstart 
 * Cobbler 
 * MAAS
-
+```
 
 Configuration Management
+```
 * Puppet + MCollective 
 * Chef
 * SaltStack
 * Ansible
 * Ubuntu Juju
-
+```
 Application Deployment
+```
 * Fabric
 * Capistrano 
-
+```
 
 ### Continous Delivery
 
