@@ -38,11 +38,43 @@ esac
 
 ### for
 
+refer: http://www.cyberciti.biz/faq/bash-for-loop/
+
 ```bash
-for dir in $DIRS 
+for VARIABLE in file1 file2 file3
 do
-  # echo $dir
+  # echo $VARIABLE
 done
+
+for VARIABLE in $(ls /tmp/)
+do
+  # echo $VARIABLE
+done
+
+
+for i in {1..5}
+do
+   # echo "Welcome $i times"
+done
+
+# $INCREMENT deault = 1
+for i in $(seq $BEGIN $INCREMENT $END)
+do
+   echo "get $i "
+done
+
+
+for (( c=1; c<=5; c++ ))
+do
+   echo "Welcome $c times"
+done
+
+
+for (( ; ; ))
+do
+   echo "infinite loops [ hit CTRL+C to stop]"
+done
+
 ```
 
 ### while

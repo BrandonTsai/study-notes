@@ -1,4 +1,5 @@
 * Linuxs 
+	* [Disk Partition](Linux/partition.md)
 	* [Pipe commands](Linux/pipe.md)
 	* [File Management](Linux/file.md)
 	* [Shell Scripts](Linux/shell.md)
