@@ -86,3 +86,27 @@ $ find /etc/apache2/ -d 1 -type f
 /etc/apache2//mime.types
 
 ```
+
+## Create File:
+
+### dd
+
+refer: http://nathan-inlinux.blogspot.tw/2013/05/linux-dd.html
+
+| 參數名稱 | 說明 |
+| ------- | --- |
+| if      | 英文為 input file，表示指定讀取來源，預設為 stdin|
+| of      | 英文為 output file，表示指定寫入目的，預設為 stdout |
+| bs      | 英文為 block size，表示讀入與寫入的大小 |
+| count   | 表示處理的次數 |
+
+
+create a 500M testfile
+```
+$ dd if=/dev/zero of=/tmp/testfile bs=1M count=500 
+```
+
+copy entire disk:
+```
+$ dd if=/dev/vda of=/dev/vdb bs=4096k
+```
