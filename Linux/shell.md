@@ -110,7 +110,25 @@ Output Log
 ----------
 
 refer: 
-- http://stackoverflow.com/questions/18460186/writing-outputs-to-log-file-and-console- http://www.tldp.org/LDP/abs/html/io-redirection.html
+
+- http://stackoverflow.com/questions/18460186/writing-outputs-to-log-file-and-console
+- http://www.tldp.org/LDP/abs/html/io-redirection.html
+
+
+| operator | notes |
+| -------- | ----- |
+| 0        | 標準輸入 |
+| 1        | 標準輸出 |
+| 2        | 標準錯誤 |
+
+
+| usage | notes |
+| ----- | ----- |
+| 1>filename | Redirect stdout to file "filename." |
+| 2>filename | Redirect stderr to file "filename." |
+| &>filename | Redirect both stdout and stderr to file "filename." |
+| 2>&1       | Redirects stderr to stdout. | 
+
 
 ```bash
 exec 3>&1 1>>${LOG_FILE} 2>&1
