@@ -1,7 +1,7 @@
-* Linuxs 
-	* [Disk Partition](Linux/partition.md)
-	* [Pipe commands](Linux/pipe.md)
+* Linuxs
+	* [Storage System](Linux/storage.md)
 	* [File Management](Linux/file.md)
+	* [Pipe commands](Linux/pipe.md)
 	* [Shell Scripts](Linux/shell.md)
 	* [Rsync](Linux/rsync.md)
 	* [IPMItool](Linux/ipmitool.md) 
@@ -12,4 +12,3 @@
 	* [Git](Others/git.md)
 	* [Openstack](OpenStack/instance.md)
 	* [Fabric](Others/fabric.md)
-

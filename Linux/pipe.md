@@ -1,8 +1,29 @@
 # Basic Pipe Command
 
-refer: http://linux.vbird.org/linux_basic/0320bash.php#pipe
+refer: 
+- http://linux.vbird.org/linux_basic/0320bash.php#pipe
+- http://linux.vbird.org/linux_basic/0220filemanager.php
 
 ## 取值
+
+### Head
+
+取出前面幾行
+
+| Option | Action   |
+|--------|----------|
+| -n num | 取出前面n行 |
+
+
+### Tail
+
+取出後面幾行
+
+| Option | Action   |
+|--------|----------|
+| -n num | 取出後面n行 |
+| -f     | Keep output appended data as the file grows; <br> Press 'Ctrl+c' to exit |
+
 
 ### Grep
 
@@ -82,10 +103,12 @@ $ awk -F '-' '{print $2}' ./phone_book
 
 加條件進階用法
 
+
 - awk ' (條件) {print}'
-- 邏輯運算 ：> , < , >= , <= , == , !=
+- 邏輯運算 ：`> , < , >= , <= , == , !=`
 - 使用布爾運算符 "||"（邏輯與）和 "&&"（邏輯或）
 - ($1 ~ /正規表示式/) || ($1 !~ /正規表示式/)
+
 
 ```
 $ awk '($1 == "brandon"){print $2}' ./phone_book 
@@ -104,10 +127,15 @@ $ awk '($2 !~ /03-[0-9]*/) {print $2}' ./phone_book
 
 ```
 
+
+
 ## 記數
 
 
 ### WC
+
+
+通常跟 sort 及 uniq 一起用
  
 $ wc [-lwm]
 
@@ -130,8 +158,55 @@ $ cat phone_book | wc -m
 ```
 
 
+### sort
 
-### sort & uniq 
+refer:
+- http://www.cyberciti.biz/faq/unix-linux-shell-script-sorting-ip-addresses/
+
+
+| options | notes |
+| ------- | ----- | 
+| -t ＜separator＞| Set field separator |
+| -k BEGIN[,END]  | Sort data / fields using the given BEGIN column number to END column number. |
+| -n 		  | Makes the program sort according to numerical value |
+| -r              | reverse sort |
+
+**sort ip address**:
+
+```
+$ cat >> ips <<EOF 
+10.0.0.4
+10.0.1.5
+10.0.0.3
+10.0.1.11
+10.0.1.12
+10.0.0.11
+10.0.0.12
+EOF
+
+
+$ sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n ips
+10.0.0.3
+10.0.0.4
+10.0.0.11
+10.0.0.12
+10.0.1.5
+10.0.1.11
+10.0.1.12
+
+$ sort -t . -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr ips
+10.0.1.12
+10.0.1.11
+10.0.1.5
+10.0.0.12
+10.0.0.11
+10.0.0.4
+10.0.0.3
+
+```
+
+
+### uniq 
 
 report or filter out consecutive repeated lines in a file
 

@@ -1,5 +1,5 @@
-Local Storage
-=============
+Storage System
+==============
 
 
 Disk
@@ -22,6 +22,8 @@ Partition
 refer:
 - http://linux.vbird.org/linux_basic/0130designlinux.php
 - http://linux.vbird.org/linux_basic/0230filesystem.php
+
+
 
 ### Primary, Extended and Logical Partition
 
@@ -105,9 +107,11 @@ Disk identifier: 0x38e4acac
 ```
 
 
+Format
+------
 
-Filesystm
----------
+### File Systm
+
 
 refer:
 - http://linux.vbird.org/linux_basic/0230filesystem.php
@@ -141,15 +145,43 @@ data block 是用來放置檔案內容資料地方，
 為了避免上述提到的檔案系統不一致的情況發生，因此我們的前輩們想到一個方式， 如果在我們的 filesystem 當中規劃出一個區塊，該區塊專門在記錄寫入或修訂檔案時的步驟，
 
 
-### mkfs : format partition
+**File System Compare**
 
-```
-# mkfs [-t 檔案系統格式] 裝置檔名
-選項與參數：
+please refer: http://en.wikipedia.org/wiki/Comparison_of_file_systems
+
+
+### mkfs
+
+Format a partition
+
+**mkfs [-t 檔案系統格式] 裝置檔名**
+
+參數:
 -t  ：可以接檔案系統格式，例如 ext4, ntfs 等(系統有支援才會生效)
 
 ```
+# mkfs -t ext4 /dev/vdb1 
+mke2fs 1.42.9 (4-Feb-2014)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+327680 inodes, 1310720 blocks
+65536 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=1342177280
+40 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736
 
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done 
+```
 
 Mount
 -----
@@ -157,9 +189,148 @@ Mount
 掛載點一定是目錄，該目錄為進入該檔案系統的入口。
 
 
+### /etc/mtab & /etc/fstab
+
+/etc/mtab: 每當 mount、umount ，都會動態更新 mtab。
+mtab 總是保持著當前系統中已掛載的分區信息
+
+/etc/fstab: 開機時的設定檔，系統開機時會依照此檔案的設定，自動 mount partition.
+
+詳細設定請參考: 
+- http://linux.vbird.org/linux_basic/0230filesystem.php#fstab
+- http://wiki.debian.org.hk/w/Configure_filesystem_mounting
+
+
+### mount
+
+mount \[Options\] ＜裝置檔名＞ ＜掛載點＞
+
+| Options | Notes |
+| ------- | ----- |
+| -a      | Mount all filesystems (of the given types) mentioned in fstab. |
+
+
+```
+# mount -t ext4 /dev/vdb1 /mnt/vdb1
+
+# mount
+/dev/vda1 on / type ext4 (rw)
+proc on /proc type proc (rw,noexec,nosuid,nodev)
+sysfs on /sys type sysfs (rw,noexec,nosuid,nodev)
+none on /sys/fs/cgroup type tmpfs (rw)
+none on /sys/fs/fuse/connections type fusectl (rw)
+none on /sys/kernel/debug type debugfs (rw)
+none on /sys/kernel/security type securityfs (rw)
+udev on /dev type devtmpfs (rw,mode=0755)
+devpts on /dev/pts type devpts (rw,noexec,nosuid,gid=5,mode=0620)
+tmpfs on /run type tmpfs (rw,noexec,nosuid,size=10%,mode=0755)
+none on /run/lock type tmpfs (rw,noexec,nosuid,nodev,size=5242880)
+none on /run/shm type tmpfs (rw,nosuid,nodev)
+none on /run/user type tmpfs (rw,noexec,nosuid,nodev,size=104857600,mode=0755)
+none on /sys/fs/pstore type pstore (rw)
+systemd on /sys/fs/cgroup/systemd type cgroup (rw,noexec,nosuid,nodev,none,name=systemd)
+/dev/vdb1 on /mnt/vdb1 type ext4 (rw)
+```
+
+**mount by UUID (Suggest)** 
+
+refer:
+- http://www.cyberciti.biz/faq/linux-finding-using-uuids-to-update-fstab/
+
+
+(1) get disk uuid via *blkid* command
+
+```
+# blkid
+/dev/vda1: LABEL="cloudimg-rootfs" UUID="ba850d9d-1348-44df-853f-e0f751961106" TYPE="ext4" 
+/dev/vdb1: UUID="af69f3b0-d180-4504-8bc7-e9403000f7d1" TYPE="ext4"
+```
+
+(2) mount by uuid directly:
+
+```
+# mount -U af69f3b0-d180-4504-8bc7-e9403000f7d1 /mnt/vdb1
+```
+
+(3) or mount through fstab
+
+add `UUID=af69f3b0-d180-4504-8bc7-e9403000f7d1 /mnt/vdb1 ext4 defaults 0 0`
+to /etc/fstab
+
+then perform `mount -a` to mount the partition.
 
 
 
+### umount
+
+卸載
+
+-f : Force  unmount 
+
+```
+# umount -f /dev/vdb1
+
+# mount
+/dev/vda1 on / type ext4 (rw)
+proc on /proc type proc (rw,noexec,nosuid,nodev)
+sysfs on /sys type sysfs (rw,noexec,nosuid,nodev)
+none on /sys/fs/cgroup type tmpfs (rw)
+none on /sys/fs/fuse/connections type fusectl (rw)
+none on /sys/kernel/debug type debugfs (rw)
+none on /sys/kernel/security type securityfs (rw)
+udev on /dev type devtmpfs (rw,mode=0755)
+devpts on /dev/pts type devpts (rw,noexec,nosuid,gid=5,mode=0620)
+tmpfs on /run type tmpfs (rw,noexec,nosuid,size=10%,mode=0755)
+none on /run/lock type tmpfs (rw,noexec,nosuid,nodev,size=5242880)
+none on /run/shm type tmpfs (rw,nosuid,nodev)
+none on /run/user type tmpfs (rw,noexec,nosuid,nodev,size=104857600,mode=0755)
+none on /sys/fs/pstore type pstore (rw)
+systemd on /sys/fs/cgroup/systemd type cgroup (rw,noexec,nosuid,nodev,none,name=systemd)
+```
+
+
+
+
+Health Check
+------------
+
+### fsck
+
+檢查與修正檔案系統錯誤的指令:
+
+- 通常只有身為 root 且你的檔案系統有問題的時候才使用這個指令，否則在正常狀況下使用此一指令， 可能會造成對系統的危害！
+- 執行 fsck 時， 被檢查的 partition 務必不可掛載到系統上！亦即是需要在卸載的狀態喔！
+
+```
+# fsck -C -f /dev/vdb1 
+fsck from util-linux 2.20.1
+e2fsck 1.42.9 (4-Feb-2014)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/dev/vdb1: 11/327680 files (0.0% non-contiguous), 55902/1310720 blocks
+```
+
+### badblocks
+
+檢查硬碟或軟碟磁區有沒有壞軌的指令:
+
+```
+# badblocks -sv /dev/vdb1 
+Checking blocks 0 to 5242879
+Checking for bad blocks (read-only test): done 
+Pass completed, 0 bad blocks found. (0/0/0 errors)
+```
+
+### smartctl
+
+refer: 
+- http://www.techrepublic.com/blog/linux-and-open-source/using-smartctl-to-get-smart-status-information-on-your-hard-drives/
+
+
+get system error message from /var/log/kern.log
 
 Other
 -----
