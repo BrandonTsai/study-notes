@@ -332,8 +332,8 @@ refer:
 
 get system error message from /var/log/kern.log
 
-Other
------
+Disk Capacity & Usage
+---------------------
 
 ### df : 列出檔案系統的整體磁碟使用量 
 
@@ -386,5 +386,63 @@ du [-ahskm] 檔案或目錄名稱
 
 ```
 
+Backup and Restore
+------------------
 
 
+### dump: backup ext2/3/4 filesystem
+
+
+refer: 
+- http://linux.vbird.org/linux_basic/0240tarcompress.php
+- http://marcustsai.blogspot.tw/2011/05/linux-dumprestore.html
+
+
+| Options | Notes |
+| ------- | ----- |
+| -f      | Write the backup to file; |
+| -u      | Update the file /var/lib/dumpdates after a successful dump. |
+| -level# | -0表示完整備份，-1就是差異化備份
+| -W      | tells the operator what file systems need to be dumped. |
+
+
+先測試一下，如果要備份此檔案系統，需多少容量？ (output 單位是 bytes)
+```
+# dump -S /dev/vdb1
+109568
+```
+
+將完整備份的檔名記錄成為 /root/boot.dump ，同時更新記錄檔：
+
+```
+# dump -0uf /backup/vdb1.dmp /dev/vdb1 
+  DUMP: Date of this level 0 dump: Thu May 21 14:08:03 2015
+  DUMP: Dumping /dev/vdb1 (/mnt/vdb1) to /backup/vdb1.dmp
+  DUMP: Label: none
+  DUMP: Writing 10 Kilobyte records
+  DUMP: mapping (Pass I) [regular files]
+  DUMP: mapping (Pass II) [directories]
+  DUMP: estimated 107 blocks.
+  DUMP: Volume 1 started with block 1 at: Thu May 21 14:08:04 2015
+  DUMP: dumping (Pass III) [directories]
+  DUMP: dumping (Pass IV) [regular files]
+  DUMP: Closing /backup/vdb1.dmp
+  DUMP: Volume 1 completed at: Thu May 21 14:08:04 2015
+  DUMP: Volume 1 90 blocks (0.09MB)
+  DUMP: 90 blocks (0.09MB) on 1 volume(s)
+  DUMP: finished in less than a second
+  DUMP: Date of this level 0 dump: Thu May 21 14:08:03 2015
+  DUMP: Date this dump completed:  Thu May 21 14:08:04 2015
+  DUMP: Average transfer rate: 0 kB/s
+  DUMP: DUMP IS DONE
+```
+
+
+看一下有沒有任何檔案系統被 dump 過的資料？
+
+```bash
+# dump -W
+Last dump(s) done (Dump '>' file systems):
+  /dev/vda1	(     /) Last dump: never
+  /dev/vdb1	(/mnt/vdb1) Last dump: Level 0, Date Thu May 21 14:08:03 2015
+```

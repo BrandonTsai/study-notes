@@ -1,6 +1,8 @@
-# File
+File
+====
 
-## Search File
+Search File
+-----------
 
 refer: http://linux.vbird.org/linux_basic/0220filemanager.php#file_find
 
@@ -87,7 +89,8 @@ $ find /etc/apache2/ -d 1 -type f
 
 ```
 
-## Create File:
+Create File:
+-----------
 
 ### dd
 
@@ -110,3 +113,49 @@ copy entire disk:
 ```
 $ dd if=/dev/vda of=/dev/vdb bs=4096k
 ```
+
+Monitor File Changes
+--------------------
+
+### incron
+
+refer:
+- http://inotify.aiken.cz/?section=incron&page=doc&lang=en
+
+Installation:
+```bash
+# apt-get install incron
+```
+
+then add configurations under **/etc/incron.d**
+
+with syntax format:
+
+**＜path＞ ＜mask＞ ＜command＞**
+
+Where:
+
+
+- *＜path＞*    is a filesystem path (each whitespace must be prepended by a backslash)
+- *＜mask＞*    is a symbolic (see inotify.h; use commas for separating symbols) or numeric mask for events
+- *＜command＞* is an application or script to run on the events
+
+
+For example: 
+
+use incron monitor the files under /root/study-notes/, 
+if any file changes, run the update-manual.sh script automatically 
+to update the website.
+
+/etc/incron.d/study-notes.conf
+```
+/root/study-notes IN_MODIFY /root/update-manual.sh
+/root/study-notes/BigData IN_MODIFY /root/update-manual.sh
+/root/study-notes/Database IN_MODIFY /root/update-manual.sh
+/root/study-notes/Linux IN_MODIFY /root/update-manual.sh
+/root/study-notes/Linux/Debian IN_MODIFY /root/update-manual.sh
+/root/study-notes/OpenStack IN_MODIFY /root/update-manual.sh
+/root/study-notes/Others IN_MODIFY /root/update-manual.sh
+/root/study-notes/PRIVATE IN_MODIFY /root/update-manual.sh
+```
+
