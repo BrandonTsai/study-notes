@@ -92,6 +92,13 @@ $ find /etc/apache2/ -d 1 -type f
 Create File:
 -----------
 
+### touch : create empty file
+
+```bash
+$ touch myfile
+```
+
+
 ### dd
 
 refer: http://nathan-inlinux.blogspot.tw/2013/05/linux-dd.html
@@ -113,6 +120,22 @@ copy entire disk:
 ```
 $ dd if=/dev/vda of=/dev/vdb bs=4096k
 ```
+
+File Content Tools
+------------------
+
+
+### sed
+
+
+### diff
+
+
+### patch
+
+
+
+
 
 Monitor File Changes
 --------------------

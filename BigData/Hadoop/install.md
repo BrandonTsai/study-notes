@@ -11,6 +11,7 @@ refer:
 
 Install required packages
 ```bash
+$ sudo apt-get update
 $ sudo apt-get install ssh rsync openjdk-7-jre openjdk-7-jdk 
 $ java -version
 java version "1.7.0_79"
@@ -28,8 +29,9 @@ Download hadoop package
 
 ```bash
 $ wget http://ftp.mirror.tw/pub/apache/hadoop/common/hadoop-2.7.0/hadoop-2.7.0.tar.gz
-$ tar -xzvf hadoop-2.7.0.tar.gz 
-$ cd hadoop-2.7.0
+$ sudo tar -xzvf hadoop-2.7.0.tar.gz 
+$ sudo mv hadoop-2.7.0 /usr/local/hadoop
+$ cd /usr/local/hadoop
 $ bin/hadoop
 Usage: hadoop [--config confdir] [COMMAND | CLASSNAME]
   CLASSNAME            run the class named CLASSNAME
@@ -100,7 +102,7 @@ set up hadoop path to current $pwd
 ```
 $ export HADOOP_PREFIX="$(pwd)"
 $ export | grep HADOOP
-declare -x HADOOP_PREFIX="/home/ubuntu/hadoop-2.7.0"
+declare -x HADOOP_PREFIX="/usr/local/hadoop"
 ```
 
 #### Execution
@@ -114,3 +116,10 @@ Start NameNode daemon and DataNode daemon:
 ```
 $ sbin/start-dfs.sh
 ```
+
+
+Browse the web interface for the NameNode; by default it is available at: `http://localhost:50070/`
+
+>> Do not forget edit security group to allow public http access to this instance.
+
+
