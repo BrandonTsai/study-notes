@@ -127,12 +127,131 @@ File Content Tools
 
 ### sed
 
+sed \[Option\] \[Line#\]Command FILE
+
+Option:
+-i: edit files in place 
+
+
+| Line# | Means | 
+| ----- | ---- | 
+| 省略  | 表示每一行都進行此動作 | 
+| n     | 代表第n行進行此動作 | 
+| n1,n2 | 代表第n1到n2行進行此動作。 | 
+| $     | 代表最後一行 | 
+
+| Command | Means |
+| ------- | ----- | 
+| a TEXT  | Append TEXT to following newline. |
+| i TEXT  | Insert TEXT to above newline | 
+| d       | Delete a line
+| s/OLD/NEW/g | search replace OLD with NEW |
+
+
+```bash
+$ cat >> example << EOF
+> # Title
+> ## title2
+> ### TITLE3
+> text
+> EOF
+
+$ sed '1a =====' example
+# Title
+=====
+## title2
+### TITLE3
+text
+
+
+$ sed '1i =====' example
+=====
+# Title
+## title2
+### TITLE3
+text
+
+
+$ sed '1d' example
+## title2
+### TITLE3
+text
+
+$ sed '$d' example
+# Title
+## title2
+### TITLE3
+
+$ sed 's/title[0-9]/Head/g' example
+# Title
+## Head
+### TITLE3
+text
+
+$ sed 's/title[0-9]/Head/gI' example
+# Title
+## Head
+### Head
+text
+
+```
+
+
 
 ### diff
 
+diff [-bBi] from-file to-file
+
+| Option | Means |
+| ------ | ----- |
+| -b     | 忽略一行當中，僅有多個空白的差異(例如 "about me" 與 "about me" 視為相同 |
+| -B     | 忽略空白行的差異。 |
+| -i     | 忽略大小寫的不同。 |
+| -N     | treat absent files as empty |
+| -a     | treat all files as text |
+| -u     | output NUM (default 3) lines of unified context |
+| -r     | recursively compare any subdirectories found |
+
+```
+$ sed '1a =====' example > example2
+
+$ diff example example2 
+1a2
+> =====
+```
 
 ### patch
 
+apply a diff file to an original
+
+| Option       | Means |
+| ------------ | ----- |
+| -b           | backup the original instead of removing it. |
+| -i patchfile | Read the patch from patchfile. |
+| -R           | 代表還原，將新的檔案還原成原來舊的版本。|
+
+
+```
+$ diff -Naur example example2 > example.patch
+
+$ patch -b -i example.patch
+$ cat example
+# Title
+=====
+## title2
+### TITLE3
+text
+
+
+$ patch -R -i example.patch 
+patching file example
+$ cat example
+# Title
+## title2
+### TITLE3
+text
+
+```
 
 
 
