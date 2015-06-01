@@ -5,6 +5,7 @@
 	* [Regular Expression](Linux/regular_expression.md)
 	* [Shell Scripts](Linux/shell.md)
 	* [Rsync](Linux/rsync.md)
+	* [Job Schedule](Linux/cron.md)
 	* [SSH](Linux/ssh.md)
 	* [Compression](Linux/compression.md)
 	* [IPMItool](Linux/ipmitool.md) 
@@ -15,5 +16,6 @@
 	* [Fabric](DevOps/fabric.md)
 * Database
 	* [postgreSQL](Database/postgreSQL.md)
+	* [mySQL](Database/mysql.md)
 * Hadoop
 	* [install](BigData/Hadoop/install.md) 

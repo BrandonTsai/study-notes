@@ -216,3 +216,110 @@ ${MYVAR##pattern}      # delete longest match of pattern from the beginning
 ${MYVAR%pattern}       # delete shortest match of pattern from the end
 ${MYVAR%%pattern}      # delete longest match of pattern from the end
 ```
+
+Bash setting
+------------
+
+Usage:
+* set \[-o option-name] [arg ...] : set env
+* set \[+o option-name] [arg ...] : unset env
+
+| Option-name | Means |
+| ----------- | ----- |
+| -e          | Exit immediately if a pipeline or,  a subshell command enclosed in parentheses |
+| -x          | After expanding each command and display the expanded value |
+
+
+Function
+---------
+
+
+### returning value from called function 
+
+refer: http://stackoverflow.com/questions/8742783/returning-value-from-called-function-in-shell-script
+
+A bash function can't return a string directly like you want it to. You can do three things:
+
+echo a string
+return an exit status, which is a number, not a string
+share a variable
+This is also true for some other shells.
+
+Here's how to do each of those options:
+
+1.) echo strings
+
+```bash
+lockdir="somedir"
+testlock(){
+    retval=""
+    if mkdir "$lockdir"
+    then # directory did not exist, but was created successfully
+         echo >&2 "successfully acquired lock: $lockdir"
+         retval="true"
+    else
+         echo >&2 "cannot acquire lock, giving up on $lockdir"
+         retval="false"
+    fi
+    echo "$retval"
+}
+
+retval=$( testlock )
+if [ "$retval" == "true" ]
+then
+     echo "directory not created"
+else
+     echo "directory already created"
+fi
+```
+
+2.) return exit status
+
+```bash
+lockdir="somedir"
+testlock(){
+    if mkdir "$lockdir"
+    then # directory did not exist, but was created successfully
+         echo >&2 "successfully acquired lock: $lockdir"
+         retval=0
+    else
+         echo >&2 "cannot acquire lock, giving up on $lockdir"
+         retval=1
+    fi
+    return "$retval"
+}
+
+testlock
+retval=$?
+if [ "$retval" == 0 ]
+then
+     echo "directory not created"
+else
+     echo "directory already created"
+fi 
+```
+
+3.) share variable
+
+```bash
+lockdir="somedir"
+retval=-1
+testlock(){
+    if mkdir "$lockdir"
+    then # directory did not exist, but was created successfully
+         echo >&2 "successfully acquired lock: $lockdir"
+         retval=0
+    else
+         echo >&2 "cannot acquire lock, giving up on $lockdir"
+         retval=1
+    fi
+}
+
+testlock
+if [ "$retval" == 0 ]
+then
+     echo "directory not created"
+else
+     echo "directory already created"
+fi
+```
