@@ -35,18 +35,21 @@ Design Thinking & UX + Business Model Canvas
 
 
 Project Management Tools:
+
 ```
 * Trello
 * Redmine
 * Slack
 ```
 Document Tools:
+
 ```
 * AsciiDoc
 * Gitbook
 * Readthedoc
 ```
 Bug Tracking System:
+
 ```
 * Mantis
 ```
@@ -54,6 +57,7 @@ Bug Tracking System:
 ### Code
 
 Hacking:
+
 ```
 * Vim
 * XCode
@@ -61,6 +65,7 @@ Hacking:
 ```
 
 Version Control:
+
 ```
 * Git
 * Github
@@ -68,9 +73,14 @@ Version Control:
 * Gerrit
 ```
 
+```
+* SourceTree
+```
+
 ### Build & Unit Testing:
 
 Continuous Integration tools:
+
 ```
 * Jenkins 
 * Maven 
@@ -78,6 +88,7 @@ Continuous Integration tools:
 * Gradle 
 * CircleCI
 ```
+
 ### Release & Deployment
 
 Continous Deployment to different environment:
@@ -91,6 +102,7 @@ Continous Deployment to different environment:
 
 
 Infrastructure as a Service
+
 ```
 * Amazon Web Services 
 * Rackspace
@@ -100,6 +112,7 @@ Infrastructure as a Service
 ```
 
 Virtualization Platforms
+
 ```
 * VMware 
 * KVM
@@ -109,6 +122,7 @@ Virtualization Platforms
 ```
 
 Containerization Tools
+
 ```
 * LXC
 * Solaris Containers
@@ -116,6 +130,7 @@ Containerization Tools
 ```
 
 Linux OS Installation
+
 ```
 * Kickstart 
 * Cobbler 
@@ -123,6 +138,7 @@ Linux OS Installation
 ```
 
 Configuration Management
+
 ```
 * Puppet + MCollective 
 * Chef
@@ -131,6 +147,7 @@ Configuration Management
 * Ubuntu Juju
 ```
 Application Deployment
+
 ```
 * Fabric
 * Capistrano 
@@ -197,11 +214,25 @@ Monitoring, Alerting, and Trending
 	8. Sensu
 
 Logging
-	1. PaperTrail 
-	2. Logstash
-	3. Loggly
-	4. Splunk
-	5. SumoLogic
+
+please refer: 
+
+- http://blog.takipi.com/the-7-log-management-tools-you-need-to-know/
+- http://www.findbestopensource.com/tagged/log-analysis
+
+```
+SaaS:
+
+ 1. PaperTrail 
+ 2. Loggly
+ 3. Splunk
+ 4. SumoLogic
+
+OpenSource:
+
+ 1. Logstash
+ 2. [graylog2](http://graylog2.org/)
+```
 
 Process Supervisors
 
