@@ -14,9 +14,12 @@
 	* [Git](DevOps/git.md)
 	* [Openstack](DevOps/OpenStack/instance.md)
 	* [Fabric](DevOps/fabric.md)
-	* [LogServer - Graylog](DevOps/LogServer/Graylog.md)
-* Database
-	* [postgreSQL](Database/postgreSQL.md)
-	* [mySQL](Database/mysql.md)
+	* Logserver
+		* [Graylog](DevOps/LogServer/Graylog.md)
+	* Database
+		* [postgreSQL](Database/postgreSQL.md)
+		* [mySQL](Database/mysql.md)
 * Hadoop
 	* [install](BigData/Hadoop/install.md) 
+* Python
+	* [Testing](Python/test.md)
