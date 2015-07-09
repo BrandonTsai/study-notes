@@ -125,6 +125,35 @@ git remote add gitlab ssh://brandontsai@gitlab.com:29418/<project>.git
 
 
 
+## Handle Remote Branch
+
+refer: http://www.hostingadvice.com/how-to/git-branch-rename/
+
+(1) Push and linked local *local-feature2* branch to trace the new remote *feature3* branch.
+
+```
+$ git push -u origin local-feature2:feature3
+Total 0 (delta 0), reused 0 (delta 0)
+To https://github.com/myusername/myproject.git
+* [new branch]      local-feature2 -&gt; feature3
+* Branch local-feature2 set up to track remote branch feature 3 from origin.
+```
+
+(2) Rename local branch 
+
+```
+$ git branch -m local-feature2 local-feature3
+```
+
+(3) Delete the old remote branch 
+
+```
+$ git push origin :feature2
+To https://github.com/myusername/myproject.git
+- [deleted]         feature2
+```
+
+
 Gerrit
 ======
 
@@ -196,5 +225,3 @@ where *last-release* is the commit id, or branch you want to reset master to.
 
 
 
-Github
-======
