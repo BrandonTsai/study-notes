@@ -383,7 +383,6 @@ public class TestList2 extends TestListBaseActivity {
 			viewTag.name.setText(items.get(position));
 			viewTag.name.setId(position);
 
-
 			viewTag.price.setId(position);
 
 			// init spinner
@@ -393,11 +392,9 @@ public class TestList2 extends TestListBaseActivity {
 					android.R.layout.simple_spinner_item,mItems);
 			viewTag.spn.setAdapter(adapter);
 
-
 			// init Button
 			viewTag.delete.setId(position);
 			viewTag.delete.setOnClickListener(new DelListItem(position));
-
 
 			return convertView;
 		}
