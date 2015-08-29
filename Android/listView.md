@@ -1,4 +1,4 @@
-ListView Adapter
+ListView
 ================
 
 There are four type adapter,  
@@ -6,13 +6,10 @@ There are four type adapter,
 please refer:
 - http://codex.wiki/post/124507-478/
 - http://blog.csdn.net/shakespeare001/article/details/7926783
+- HightLight selected Item: http://stackoverflow.com/questions/16189651/android-listview-selected-item-stay-highlighted
+or
+http://wangshifuola.blogspot.tw/2012/03/androidlistviewhighlight.html
 
-
-Array Adapter
--------------
-
-Simple Adapter
----------------
 
 Base Adapter
 ------------

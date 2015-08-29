@@ -134,15 +134,19 @@ list2.sort(null);
 System.out.printf(ArrayList2String(list2));
 ```
 
+or
 
-Map
----
+```
+Collections.sort()
+```
 
 HashMap
 -------
 
 Set
 ---
+
+
 
 Json
 -----
