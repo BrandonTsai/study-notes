@@ -24,6 +24,8 @@
 	* [Basic Concept](Android/basic.md)
 	* [Menu](Android/menu.md)
 	* [ListView](Android/listView.md)
+	* [Widgets](Android/widgets.md)	
+	* [ExpandableListView](Android/ExpandableListView.md)
 * Hadoop
 	* [install](BigData/Hadoop/install.md)
 * Python

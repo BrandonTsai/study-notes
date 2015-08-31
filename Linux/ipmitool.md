@@ -104,3 +104,10 @@ use BMC user/passwd/ip to management remote server
 ipmitool -U ＜username＞ -P ＜password＞ -H ＜BMC ip＞ chassis power status
 ```
 
+
+**Hint**: remember add route to the BMC subnet via:
+
+```
+route add -net 10.X.X.0 netmask 255.255.255.0 dev eth1 gw 192.168.X.X
+```
+
