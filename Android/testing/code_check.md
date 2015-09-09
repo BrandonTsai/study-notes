@@ -51,18 +51,23 @@ But if you want to improve yours code with high quality, the *QAPlug - FindBugs*
 **Step2: Analyze your module with custom checkstyle rules**
 
 Right click on the module/folder that you want to analyze.
+
 ![](images/codecheck_analysis.png)
 
 Specify Analysis Scope
+
 ![](images/codecheck_specify_analysis.png)
 
 Import rules from file. [example file](files/simpleCheckstyle.xml)
+
 ![](images/codecheck_import_rules.png)
 
 Set your custome rules.
+
 ![](images/codecheck_custom_rules.png)
 
 Run with your custome checkstyle rules
+
 ![](images/codecheck_run_w_custome_rules.png)
 
 

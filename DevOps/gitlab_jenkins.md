@@ -105,24 +105,40 @@ Configure job
 Create New Jenkins Job
 -----------------------
 
-### Source Code Management
+### create freestyle project
 
-select `Git`,
+![](./images/jenkins_add_job_1.png)
+
+### Restrict build slave
+
+input *"Android"* to Label field.
+
+![](./images/jenkins_add_job_label.png)
+
+
+### Source Code Management
 
 Input the Gitlab Project Repository URL & Credential.
 
 The Credential can set up by username/password of gitlab user.
 
-or use the *"private key"* of Jenkins Master server.
+or use the *"private key"*
+
+![](./images/jenkins_add_job_git.png)
 
 
 ### Build Triggers:
 
 select `Poll SCM`
 
+![](./images/jenkins_add_job_build_triggers.png)
+
 ### Build Command
 
-execute shell
+
+![](./images/jenkins_add_job_build_shell.png)
+
+use execute shell
 
 for original android studio project:
 ```
@@ -157,11 +173,18 @@ Set up Gitlab server
 - **URL:** `http://172.16.X.X:8080/git/notifyCommit?url=<URL of the Git repository>[&branches=branch1[,branch2]*][&sha1=<commit ID>]`. please refer: https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin
 - **Trigger:**  Select `Push event`
 
+![](./images/gitlab_web_hooks.png)
+
 
 ### Deploy keys
 
-Create a new Deploy Key with the *"public key"* of Jenkins master server.
+Create a new Deploy Key with the *"public key"*.
 
+![](./images/gitlab_deploy_key_new.png)
+
+or enable other project's keys
+
+![](./images/gitlab_deploy_key_enable.png)
 
 ### Add Jenkins Job Status to Project's Wiki:
 
@@ -169,10 +192,12 @@ Create a new Deploy Key with the *"public key"* of Jenkins master server.
 
 Open the job page:
 
---> on the left sidebar, click the *Embeddable Build Status*
+--> on the left sidebar, click the *"Embeddable Build Status"*
 
 --> Copy the *"unprotected link path"* in *Markdown (with view)*. The link is similar to `[![Build Status](http://172.16.X.X:8080/buildStatus/icon?job=test)](http://172.16.X.X:8080/job/test/)`
 
+
+![](./images/jenkins_build_status.png)
 
 **On Gitlab:**
 
@@ -181,3 +206,8 @@ Open the wiki page of your project.
 --> paste the *"unprotected link path"* on the new wiki page to see the jobs result.
 
 --> Also paste `http://[jenkins_server]/job/[job-name]/lastBuild/console` to link to the console out quickly.
+
+
+result is simlilar to this:
+
+![](./images/gitlab_wiki.png)
