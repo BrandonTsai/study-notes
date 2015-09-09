@@ -27,6 +27,7 @@
 	* [ListView](Android/listView.md)
 	* [Widgets](Android/widgets.md)
 	* [ExpandableListView](Android/ExpandableListView.md)
+	* [Code Analysis](Android/code_check.md)
 * Hadoop
 	* [install](BigData/Hadoop/install.md)
 * Python

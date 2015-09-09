@@ -32,7 +32,7 @@ Set up Jenkin Slave Nodes for android testing
 
 ### Install git & java sdk
 
-**Install JAva JRE & Oracle JDK:**
+**Install Java JRE & Oracle JDK:**
 
 refer: https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
 
@@ -77,8 +77,13 @@ refer: http://linuxg.net/how-to-install-gradle-2-1-on-ubuntu-14-10-ubuntu-14-04-
 
 ### Install CheckStyle
 
-refer: http://martin-thoma.com/checkstyle/
+refer http://martin-thoma.com/checkstyle/ to install checkstyle.
 
+and declare the java path:
+
+```
+export JAVA_CMD=/usr/lib/jvm/java-8-oracle/bin/java
+```
 
 Add Jenkins Slave
 ------------------
@@ -106,6 +111,10 @@ select `Git`,
 
 Input the Gitlab Project Repository URL & Credential.
 
+The Credential can set up by username/password of gitlab user.
+
+or use the *"private key"* of Jenkins Master server.
+
 
 ### Build Triggers:
 
@@ -115,10 +124,28 @@ select `Poll SCM`
 
 execute shell
 
+for original android studio project:
 ```
-cp ~/local.properties ./
+cp ~/studio_project/local.properties ./
+
 sudo gradle assemble
-checkstyle -c ~/checkstyle.xml -r ./app/src/main/java/
+sudo gradle assembleRelease
+sudo gradle assembleRelease -Pandroid.injected.signing.store.file=$ANDROID_KEYFILE -Pandroid.injected.signing.store.password=$ANDROID_STORE_PASSWORD -Pandroid.injected.signing.key.alias=$ANDROID_KEY_ALIAS -Pandroid.injected.signing.key.password=$ANDROID_KEY_PASSWORD
+
+checkstyle -c ~/studio_project/checkstyle.xml -r ./app/src/main/java/
+```
+
+for Eclipse to android studio project:
+```
+cp -r ~/studio_project /tmp/vitalsign
+cp -r ./* /tmp/vitalsign/app/
+cd /tmp/vitalsign/
+
+sudo gradle assemble
+sudo gradle assembleRelease
+sudo gradle assembleRelease -Pandroid.injected.signing.store.file=$ANDROID_KEYFILE -Pandroid.injected.signing.store.password=$ANDROID_STORE_PASSWORD -Pandroid.injected.signing.key.alias=$ANDROID_KEY_ALIAS -Pandroid.injected.signing.key.password=$ANDROID_KEY_PASSWORD
+
+checkstyle -c ~/studio_project/checkstyle.xml -r ./app/src/
 ```
 
 
@@ -127,16 +154,22 @@ Set up Gitlab server
 
 ### Web Hooks
 
-- **URL:** `http://yourserver/git/notifyCommit?url=<URL of the Git repository>[&branches=branch1[,branch2]*][&sha1=<commit ID>]`. please refer: https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin
+- **URL:** `http://172.16.X.X:8080/git/notifyCommit?url=<URL of the Git repository>[&branches=branch1[,branch2]*][&sha1=<commit ID>]`. please refer: https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin
 - **Trigger:**  Select `Push event`
 
-### Add Jenkins Job Status to Wiki:
+
+### Deploy keys
+
+Create a new Deploy Key with the *"public key"* of Jenkins master server.
+
+
+### Add Jenkins Job Status to Project's Wiki:
 
 **On Jenkins:**
 
 Open the job page:
 
---> on the left sidebar, click the  *Embeddable Build Status*
+--> on the left sidebar, click the *Embeddable Build Status*
 
 --> Copy the *"unprotected link path"* in *Markdown (with view)*. The link is similar to `[![Build Status](http://172.16.X.X:8080/buildStatus/icon?job=test)](http://172.16.X.X:8080/job/test/)`
 
@@ -145,6 +178,6 @@ Open the job page:
 
 Open the wiki page of your project.
 
---> paste the *"unprotected link path"* on the new wiki page.
+--> paste the *"unprotected link path"* on the new wiki page to see the jobs result.
 
---> Save and see the jobs result.
+--> Also paste `http://[jenkins_server]/job/[job-name]/lastBuild/console` to link to the console out quickly.
