@@ -1,5 +1,5 @@
-Gitlab + Jenkins
-=================
+Gitlab + Jenkins + Android -  Management Guild
+==============================================
 
 
 Install Gitlab
@@ -35,6 +35,14 @@ Set up Jenkin Slave Nodes for android testing
 **Install Java JRE & Oracle JDK:**
 
 refer: https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
+
+```
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+
+sudo apt-get install default-jre oracle-java8-installer
+```
 
 **Install git:**
 
@@ -101,6 +109,8 @@ Configure job
 --> specify the Label of the slave node.
 
 
+Gitlab + Jenkins + Android -  User Guild
+=========================================
 
 Create New Jenkins Job
 -----------------------
@@ -140,16 +150,6 @@ select `Poll SCM`
 
 use execute shell
 
-for original android studio project:
-```
-cp ~/studio_project/local.properties ./
-
-sudo gradle assemble
-sudo gradle assembleRelease
-sudo gradle assembleRelease -Pandroid.injected.signing.store.file=$ANDROID_KEYFILE -Pandroid.injected.signing.store.password=$ANDROID_STORE_PASSWORD -Pandroid.injected.signing.key.alias=$ANDROID_KEY_ALIAS -Pandroid.injected.signing.key.password=$ANDROID_KEY_PASSWORD
-
-checkstyle -c ~/studio_project/checkstyle.xml -r ./app/src/main/java/
-```
 
 for Eclipse to android studio project:
 ```
@@ -157,11 +157,23 @@ cp -r ~/studio_project /tmp/vitalsign
 cp -r ./* /tmp/vitalsign/app/
 cd /tmp/vitalsign/
 
-sudo gradle assemble
-sudo gradle assembleRelease
+checkstyle -c ~/studio_project/checkstyle.xml -r ./app/src/
+
 sudo gradle assembleRelease -Pandroid.injected.signing.store.file=$ANDROID_KEYFILE -Pandroid.injected.signing.store.password=$ANDROID_STORE_PASSWORD -Pandroid.injected.signing.key.alias=$ANDROID_KEY_ALIAS -Pandroid.injected.signing.key.password=$ANDROID_KEY_PASSWORD
 
-checkstyle -c ~/studio_project/checkstyle.xml -r ./app/src/
+sudo gradle assembleDebug
+sudo gradle assembleDebugAndroidTest
+
+
+ls /tmp/vitalsign/app/build/outputs/apk/*unaligned.apk | xargs -i adb -e install {}
+
+sudo adb shell am instrument -w com.quanta.vitalsign.test/android.support.test.runner.AndroidJUnitRunner
+
+adb uninstall com.quanta.vitalsign
+adb uninstall com.quanta.vitalsign.test
+
+cd ~
+sudo rm -r /tmp/vitalsign/
 ```
 
 
