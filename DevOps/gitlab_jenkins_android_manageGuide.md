@@ -40,7 +40,7 @@ sudo apt-get install python-software-properties
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 
-sudo apt-get install default-jre oracle-java8-installer
+sudo apt-get install oracle-java8-installer oracle-java8-set-default
 ```
 
 **Install git:**
@@ -50,15 +50,21 @@ sudo apt-get install default-jre oracle-java8-installer
 
 ### Install android sdk
 
-    $ wget http://dl.google.com/android/android-sdk_r24.3.4-linux.tgz
+```
+$ wget http://dl.google.com/android/android-sdk_r24.3.4-linux.tgz
 
-    $ tar zxvf android-sdk_r24.3.4-linux.tgz
+$ tar zxvf android-sdk_r24.3.4-linux.tgz
+```
 
-    $ cd android-sdk-linux/tools
-    $ sudo ./android update sdk -u
-    $ sudo ./android update sdk -u --all --filter build-tools-21.1.2
+install *SDK Build-tools* and *SDK Platform* by android command
 
-If you working on UBUNTU 64 Bit: You have to install these packages to solve errors because Android SDK still support UBUNTU 64 Bit.
+```
+$ cd android-sdk-linux/tools
+$ sudo ./android list sdk --all
+$ sudo ./android update sdk -u -a -t <package no.>
+```
+
+If you working on UBUNTU 64 Bit: You have to install these packages to solve errors because Android SDK  did not fully support 64 Bit system.
 
     $ sudo apt-get install lib32stdc++6 lib32z1
 
@@ -77,6 +83,12 @@ Or
 
 refer: http://linuxg.net/how-to-install-gradle-2-1-on-ubuntu-14-10-ubuntu-14-04-ubuntu-12-04-and-derivatives/
 
+```
+sudo add-apt-repository ppa:cwchien/gradle
+sudo apt-get update
+sudo apt-get install gradle
+```
+
 <br>
 **Gradle Usage:**
 - [Gradle User Guide](https://docs.gradle.org/current/userguide/userguide.html)
@@ -84,9 +96,15 @@ refer: http://linuxg.net/how-to-install-gradle-2-1-on-ubuntu-14-10-ubuntu-14-04-
 
 ### Install CheckStyle
 
-refer http://martin-thoma.com/checkstyle/ to install checkstyle.
+refer: http://martin-thoma.com/checkstyle/
 
-and declare the java path:
+install checkstyle.
+
+```
+sudo apt-get install checkstyle
+```
+
+declare the java path:
 
 ```
 export JAVA_CMD=/usr/lib/jvm/java-8-oracle/bin/java
@@ -100,6 +118,10 @@ refer:
 - [Manage android AVD by cmdline](http://developer.android.com/tools/devices/managing-avds-cmdline.html)
 - [Using android AVD by cmdline](http://developer.android.com/tools/devices/emulator.html)
 - [Install ABIs before create AVD](http://stackoverflow.com/questions/10019532/no-abi-error-when-creating-an-android-virtual-device)
+
+
+### start Emulator
+
 
 
 Add Jenkins Slave
