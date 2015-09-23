@@ -1,6 +1,29 @@
 Gitlab + Jenkins + Android -  User Guild
 =========================================
 
+Set up Gitlab server
+--------------------
+
+### Web Hooks
+
+- **URL:** `http://<Jenkins Server IP>/git/notifyCommit?url=<URL of the Git repository>[&branches=branch1[,branch2]*][&sha1=<commit ID>]`. please refer: https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin
+- **Trigger:**  Select `Push event`
+
+![](./images/gitlab_web_hooks.png)
+
+
+### Deploy keys
+
+Create a new Deploy Key with the *"public key"*.
+
+![](./images/gitlab_deploy_key_new.png)
+
+or enable other project's keys
+
+![](./images/gitlab_deploy_key_enable.png)
+
+
+
 Create New Jenkins Job
 -----------------------
 
@@ -53,7 +76,7 @@ sudo gradle assembleDebug
 sudo gradle assembleDebugAndroidTest
 
 
-ls /tmp/vitalsign/app/build/outputs/apk/*unaligned.apk | xargs -i adb -e install {}
+ls /tmp/vitalsign/app/build/outputs/apk/*unaligned.apk | xargs -i adb -e -r install {}
 
 sudo adb shell am instrument -w com.quanta.vitalsign.test/android.support.test.runner.AndroidJUnitRunner
 
@@ -69,28 +92,9 @@ command reference:
 - [adb](http://developer.android.com/tools/help/adb.html)
 
 
-Set up Gitlab server
---------------------
 
-### Web Hooks
-
-- **URL:** `http://<Jenkins Server IP>/git/notifyCommit?url=<URL of the Git repository>[&branches=branch1[,branch2]*][&sha1=<commit ID>]`. please refer: https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin
-- **Trigger:**  Select `Push event`
-
-![](./images/gitlab_web_hooks.png)
-
-
-### Deploy keys
-
-Create a new Deploy Key with the *"public key"*.
-
-![](./images/gitlab_deploy_key_new.png)
-
-or enable other project's keys
-
-![](./images/gitlab_deploy_key_enable.png)
-
-### Add Jenkins Job Status to Project's Wiki:
+Add Jenkins Job Status to Project's Wiki
+-----------------------------------------
 
 **On Jenkins:**
 

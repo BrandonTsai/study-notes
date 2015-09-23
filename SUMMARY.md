@@ -13,7 +13,8 @@
 	* [KVM](Linux/KVM.md)
 * [DevOps](DevOps/DevOps.md)
 	* [Git](DevOps/git.md)
-	* [Gitlab+Genkins](DevOps/gitlab_jenkins.md)
+	* [Gitlab+Genkins_UserGuide](DevOps/gitlab_jenkins_andorid_userGuide.md)
+	* [Gitlab+Genkins_ManageGuide](DevOps/gitlab_jenkins_android_manageGuide.md)
 	* [Openstack](DevOps/OpenStack/instance.md)
 	* [Fabric](DevOps/fabric.md)
 	* Logserver
@@ -25,10 +26,6 @@
 	* [Basic Concept](Android/basic.md)
 	* [Menu](Android/menu.md)
 	* [ListView](Android/listView.md)
-	* [Widgets](Android/widgets.md)
 	* [ExpandableListView](Android/ExpandableListView.md)
+	* [Widgets](Android/widgets.md)
 	* [Code Analysis](Android/testing/code_check.md)
-* Hadoop
-	* [install](BigData/Hadoop/install.md)
-* Python
-	* [Testing](Python/test.md)
