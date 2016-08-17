@@ -6,10 +6,10 @@ IPMI Introduction
 
 
 IPMI: A set of computer interface
-that provides **out-of-band management** and monitoring capabilities of 
+that provides **out-of-band management** and monitoring capabilities of
 the host system's CPU, firmware (BIOS or UEFI) and operating system.
 
-An IPMI sub-system consists of a main controller, called the **baseboard management controller (BMC)** and other management controllers distributed among different system modules that are referred to as satellite controllers. 
+An IPMI sub-system consists of a main controller, called the **baseboard management controller (BMC)** and other management controllers distributed among different system modules that are referred to as satellite controllers.
 
 
 refer:
@@ -57,7 +57,7 @@ ipmitool lan set 1 defgw ipaddr 10.3.3.254
 
 set BMC ip address from DHCP:
 ```
-ipmitool lan set 1 ipsrc dhcp 
+ipmitool lan set 1 ipsrc dhcp
 ```
 
 
@@ -65,7 +65,7 @@ Power Management
 ----------------
 
 ```
-ipmitool power status 
+ipmitool power status
 ipmitool power on
 ipmitool power off
 ipmitool power cycle
@@ -88,7 +88,7 @@ ipmitool sdr list
 Get Event Log
 -------------
 
-get latest 5 event log 
+get latest 5 event log
 
 ```
 ipmitool sel list last 5
@@ -98,16 +98,16 @@ ipmitool sel list last 5
 Remote Control
 --------------
 
-use BMC user/passwd/ip to management remote server 
+use BMC user/passwd/ip to management remote server
 
 ```
 ipmitool -U ＜username＞ -P ＜password＞ -H ＜BMC ip＞ chassis power status
 ```
-
+root/root
+admin/admin
 
 **Hint**: remember add route to the BMC subnet via:
 
 ```
 route add -net 10.X.X.0 netmask 255.255.255.0 dev eth1 gw 192.168.X.X
 ```
-

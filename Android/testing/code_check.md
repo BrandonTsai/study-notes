@@ -11,9 +11,9 @@ Code Quality Analysis Tools
 ### Check Style
 
 refer:
-- [Android Code Style](http://source.android.com/source/code-style.html)
-- [Sun Java Code Style](http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html)
-- [Google Java Code Style](http://google.github.io/styleguide/javaguide.html)
+- Android Code Style:http://source.android.com/source/code-style.html
+- Sun Java Code Style: http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html
+- Google Java Code Style: http://google.github.io/styleguide/javaguide.html
 
 ### Findbugs
 
@@ -58,11 +58,11 @@ Specify Analysis Scope
 
 ![](images/codecheck_specify_analysis.png)
 
-Import rules from file. [example file](files/simpleCheckstyle.xml)
+You can import rules from file. 
 
 ![](images/codecheck_import_rules.png)
 
-Set your custome rules.
+or set your custome rules.
 
 ![](images/codecheck_custom_rules.png)
 

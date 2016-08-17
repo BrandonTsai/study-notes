@@ -27,7 +27,7 @@ git clone https://github.com/BrandonTsai/study-notes.git
 
 ## Create new branch to Modify
 
-(1) always create a branch 
+(1) always create a branch
 
 (2) you can also add a branch that can trace **remote branch** by:
 
@@ -69,7 +69,7 @@ git commit -a
 	詳述 (每行不超過72)
 
 
-**Hint:** if you are tracing remote branch, 
+**Hint:** if you are tracing remote branch,
 it is great to pull latest code before commit
 
 ## Re-commit
@@ -83,7 +83,7 @@ git commit --amend
 ## cancel the latest commit
 
 if you want to cancel the latest commit:
- 
+
 	git reset HEAD^
 
 ## Pull
@@ -139,13 +139,13 @@ To https://github.com/myusername/myproject.git
 * Branch local-feature2 set up to track remote branch feature 3 from origin.
 ```
 
-(2) Rename local branch 
+(2) Rename local branch
 
 ```
 $ git branch -m local-feature2 local-feature3
 ```
 
-(3) Delete the old remote branch 
+(3) Delete the old remote branch
 
 ```
 $ git push origin :feature2
@@ -197,7 +197,7 @@ Gitlab
     git push gitlab HEAD:<my-branch>
 
 ## Clone form gitlab
-    
+
     git clone git@gitlab.com:brandon.tsai/<my-project>.git
     touch README.md
     git add --all
@@ -223,5 +223,45 @@ git push -f origin <last-release>:master
 
 where *last-release* is the commit id, or branch you want to reset master to.
 
+Diff
+====
+
+```
+git diff Old_commit_id New_commit_id > my.patch
+git apply my.patch
+```
+
+format-patch
+============
+
+patch the latest n commits.
+```
+git format-patch -n
+```
+
+switch to another branch, apply these patches.
+```
+git am xxx.patch
+```
 
 
+when conflict:
+
+refer: http://blog.csdn.net/gracioushe/article/details/6278842
+
+git apply --reject xxx.patch
+
+<fix ...>
+
+git am --resolved
+
+
+Error Handle
+============
+
+
+## Push fail. error: src refspec master does not match any.
+
+1. Try git show-ref to see what refs do you have. Is there refs/heads/master?
+
+2. Try git push origin HEAD:master as more local-reference-independent solution.

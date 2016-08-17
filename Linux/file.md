@@ -11,7 +11,7 @@ refer: http://linux.vbird.org/linux_basic/0220filemanager.php#file_find
 locate a **"program"** file in the user's **"PATH"**
 
 ```
-$ which -a cd 
+$ which -a cd
 /usr/bin/cd
 ```
 
@@ -25,19 +25,19 @@ $ which -a cd
 
 * locate 尋找的資料是由『已建立的資料庫 /var/lib/mlocate/』
 * 資料庫的建立預設是在每天執行一次
-* 更新 locate 資料庫的方法非常簡單，直接輸入『 updatedb 』就可以了. 
+* 更新 locate 資料庫的方法非常簡單，直接輸入『 updatedb 』就可以了.
 	* MAC: run "/usr/libexec/locate.updatedb"
 * locate can not find file in specified folder
 
 
 ```
-$ locate locate.updatedb 
+$ locate locate.updatedb
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/share/man/man8/locate.updatedb.8
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/share/man/man8/locate.updatedb.8
 /usr/libexec/locate.updatedb
 /usr/share/man/man8/locate.updatedb.8
 
-$ locate -i Locate.UpDatedb 
+$ locate -i Locate.UpDatedb
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/share/man/man8/locate.updatedb.8
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/share/man/man8/locate.updatedb.8
 /usr/libexec/locate.updatedb
@@ -113,7 +113,7 @@ refer: http://nathan-inlinux.blogspot.tw/2013/05/linux-dd.html
 
 create a 500M testfile
 ```
-$ dd if=/dev/zero of=/tmp/testfile bs=1M count=500 
+$ dd if=/dev/zero of=/tmp/testfile bs=1M count=500
 ```
 
 copy entire disk:
@@ -130,20 +130,20 @@ File Content Tools
 sed \[Option\] \[Line#\]Command FILE
 
 Option:
--i: edit files in place 
+-i: edit files in place
 
 
-| Line# | Means | 
-| ----- | ---- | 
-| 省略  | 表示每一行都進行此動作 | 
-| n     | 代表第n行進行此動作 | 
-| n1,n2 | 代表第n1到n2行進行此動作。 | 
-| $     | 代表最後一行 | 
+| Line# | Means |
+| ----- | ---- |
+| 省略  | 表示每一行都進行此動作 |
+| n     | 代表第n行進行此動作 |
+| n1,n2 | 代表第n1到n2行進行此動作。 |
+| $     | 代表最後一行 |
 
 | Command | Means |
-| ------- | ----- | 
+| ------- | ----- |
 | a TEXT  | Append TEXT to following newline. |
-| i TEXT  | Insert TEXT to above newline | 
+| i TEXT  | Insert TEXT to above newline |
 | d       | Delete a line
 | s/OLD/NEW/g | search replace OLD with NEW |
 
@@ -215,7 +215,7 @@ diff [-bBi] from-file to-file
 ```
 $ sed '1a =====' example > example2
 
-$ diff example example2 
+$ diff example example2
 1a2
 > =====
 ```
@@ -243,7 +243,7 @@ $ cat example
 text
 
 
-$ patch -R -i example.patch 
+$ patch -R -i example.patch
 patching file example
 $ cat example
 # Title
@@ -283,10 +283,10 @@ Where:
 - *＜command＞* is an application or script to run on the events
 
 
-For example: 
+For example:
 
-use incron monitor the files under /root/study-notes/, 
-if any file changes, run the update-manual.sh script automatically 
+use incron monitor the files under /root/study-notes/,
+if any file changes, run the update-manual.sh script automatically
 to update the website.
 
 /etc/incron.d/study-notes.conf
@@ -300,4 +300,3 @@ to update the website.
 /root/study-notes/Others IN_MODIFY /root/update-manual.sh
 /root/study-notes/PRIVATE IN_MODIFY /root/update-manual.sh
 ```
-

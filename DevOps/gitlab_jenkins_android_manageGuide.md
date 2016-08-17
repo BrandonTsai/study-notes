@@ -111,6 +111,12 @@ export JAVA_CMD=/usr/lib/jvm/java-8-oracle/bin/java
 ```
 
 
+### Install sidebar
+
+```
+sudo apt-get install android-tools-adb
+```
+
 ### Set up Android Emulator
 
 refer:
@@ -122,6 +128,9 @@ refer:
 
 ### start Emulator
 
+if you hit **'SDL init failure, reason is: No available video device'**
+
+Login Ubuntu from GUI
 
 
 Add Jenkins Slave
