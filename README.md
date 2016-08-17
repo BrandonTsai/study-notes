@@ -4,7 +4,7 @@ Gitbooks format study notes
 
 ## Preface
 
-I usually brows a web page with Evernote Clearly, and take a quick note into Evernote. 
+I usually browse a web page with Evernote Clearly, and take a quick note into Evernote. 
 But sometimes, if I have to give a presentation, I will write my study notes in power point format.
 Besides, I also write the technical document in Markdown or AsciiDoc format.
 
