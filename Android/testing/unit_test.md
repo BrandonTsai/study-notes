@@ -77,9 +77,6 @@ and the objects that you want to test have been correctly instantiated or initia
 3. check testing result
 
 
-
-
-
 Instrumentation
 ---------------
 
@@ -92,3 +89,19 @@ refer:
  The instrumentation has an ability to run code before each one of these events. This ability is used to inject relevant test code and allow test automation.
 
 ![Instrumentation Concept](http://www.top-q.co.il/wp-content/uploads/2013/03/lifeCycle.png)
+
+
+Run Android Unit Testing via Command on Linux Server
+====================================================
+
+refer:
+- http://developer.android.com/tools/testing/testing_otheride.html#RunTestsDevice
+- [Manage android AVD by cmdline](http://developer.android.com/tools/devices/managing-avds-cmdline.html)
+- [Using android AVD by cmdline](http://developer.android.com/tools/devices/emulator.html)
+- [Install ABIs before create AVD](http://stackoverflow.com/questions/10019532/no-abi-error-when-creating-an-android-virtual-device)
+- [vnc server](http://www.krizna.com/ubuntu/install-vnc-server-ubuntu-14-04/)
+
+
+```
+sudo adb shell am instrument -w com.myapp.test/android.support.test.runner.AndroidJUnitRunner
+```

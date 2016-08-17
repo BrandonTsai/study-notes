@@ -14,20 +14,19 @@ Debug
 - BugSense
 - Store Runtime Application Log to File
 
+Code Format Check
+------------------
+
 
 Unit Test
 ----------
 - Basic Usage
 - Mock
-- How to test ...
-
-##### Mock Tools for Unit Test
-
-* Mockito: simplest mock tool
-* [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
-* EasyMock
-* PowerMock: to Mocking Static Method
-* Robolectric
+  * Mockito: simplest mock tool
+  * [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
+  * EasyMock
+  * PowerMock: to Mocking Static Method
+  * Robolectric
 
 
 UI test
@@ -36,7 +35,11 @@ UI test
 - UI Automator Viewer
 
 
-Others
--------
-- monkey testing
-- StrictMode
+Monkey testing
+--------------
+- Build-in monkey
+- Monkey runner
+- Adb getEvent/sendEvent
+
+StrictMode
+----------
