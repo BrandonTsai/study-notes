@@ -5,8 +5,8 @@ Git
 ## Git global setup:
 
 ```
-git config --global user.name "Brandon-Tsai"
-git config --global user.email "brandon@xxx-mail.com"
+git config --local user.name "BrandonTsai"
+git config --local user.email "emilwings@gmail.com"
 ```
 
 ## Create new project
