@@ -45,6 +45,20 @@ sudo pip install robotframework
 
 ## Selenium
 
+#### Install Selenium
+
+
+```bash
+sudo pip install selenium==2.53.6
+```
+
+**DO NOT** install selenium >= 3.0.0
+
+because latest selenium does not open firefox with default profile.
+
+then you will need to confirm the certification every time and cause open browser fail.
+
+
 #### Install Selenium2Library
 
 Please install my Selenium2Library repo:
