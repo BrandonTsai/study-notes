@@ -1,6 +1,12 @@
 Advance adb usage
 =================
 
+Enable wifi connected
+---------------------
+
+`adb tcpip 5555`
+`adb connect 192.168.x.x:5555`
+
 dumpsys
 -------
 

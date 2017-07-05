@@ -1,4 +1,4 @@
-# PostgreSQL 
+# PostgreSQL
 
 User Guide: http://twpug.net/docs/postgresql-doc-8.0-zh_TW/
 
@@ -16,12 +16,18 @@ sudo apt-get install postgresql postgresql-contrib
 su as default postgreSQL admin
 
 ```
-sudo -i -u postgres
+su -i -u postgres
+```
+
+or Login by username/password
+
+```
+psql -h myhost -d mydb -U myuser
 ```
 
 ### User Management
 
-The default authentication mode is set to 'ident' 
+The default authentication mode is set to 'ident'
 which means a given Linux user xxx can only connect as the postgres user xxx.
 Therefore, it is better to create a new Linux user by 'adduser my_user' command
 
@@ -39,7 +45,7 @@ postgres=# CREATE USER my_user PASSWORD 'yyy';
 list all users:
 ```
 postgres=# SELECT * FROM pg_user;
-postgres=# \du 
+postgres=# \du
 ```
 
 allow user to access database:
@@ -90,7 +96,6 @@ To switch databases:
 ### Table Management
 
 list
-``` 
+```
 \dt: list all tables in the current database
 ```
-
