@@ -265,3 +265,9 @@ Error Handle
 1. Try git show-ref to see what refs do you have. Is there refs/heads/master?
 
 2. Try git push origin HEAD:master as more local-reference-independent solution.
+
+
+
+# Combine Multiple Commits
+
+http://zerodie.github.io/blog/2012/01/19/git-rebase-i/

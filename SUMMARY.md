@@ -1,6 +1,19 @@
 # Summary
 
 * [Introduction](README.md)
+* (ToDo) React Native
+* [DevOps](DevOps/DevOps.md)
+    * [Git](DevOps/git.md)
+    * (ToDo) Docker
+    * [Fabric](DevOps/fabric.md)
+    * (ToDo) Ansible
+    * (ToDo) Gitlab-CI
+    * Genkins
+        * [Gitlab+Genkins_UserGuide](DevOps/jenkins/gitlab_jenkins_android_userGuide.md)
+        * [Gitlab+Genkins_ManageGuide](DevOps/jenkins/gitlab_jenkins_android_manageGuide.md)
+    * Database
+        * [PostgreSQL](Database/postgreSQL.md)
+        * [MySQL](Database/mysql.md)
 * Android Development
     * [adb usage](Android/adb.md)
     * [Basic Concept](Android/basic.md)
@@ -18,27 +31,15 @@
     * [UI Test](Android/testing/ui_test.md)
     * [Robot Framework](Android/testing/robotframework/Environment_Setup.md)
 * Linux
-    * [Storage System](Linux/storage.md)
     * [File Management](Linux/file.md)
     * [Pipe commands](Linux/pipe.md)
+    * [Compression](Linux/compression.md)
     * [Regular Expression](Linux/regular_expression.md)
     * [Shell Scripts](Linux/shell.md)
     * [Rsync](Linux/rsync.md)
     * [Job Schedule](Linux/cron.md)
     * [SSH](Linux/ssh.md)
-    * [Compression](Linux/compression.md)
     * [IPMItool](Linux/ipmitool.md)
     * [Debian Repository](Linux/Debian/local_repo.md)
     * [KVM](Linux/KVM.md)
-* [DevOps](DevOps/DevOps.md)
-    * [Git](DevOps/git.md)
-    * [Gitlab+Genkins_UserGuide](DevOps/gitlab_jenkins_andorid_userGuide.md)
-    * [Gitlab+Genkins_ManageGuide](DevOps/gitlab_jenkins_android_manageGuide.md)
-    * [Openstack](DevOps/OpenStack/instance.md)
-    * [Fabric](DevOps/fabric.md)
-    * Logserver
-        * [Graylog](DevOps/LogServer/Graylog.md)
-    * Database
-        * [postgreSQL](Database/postgreSQL.md)
-        * [mySQL](Database/mysql.md)
-
+    * [Storage System](Linux/storage.md)
