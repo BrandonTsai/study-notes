@@ -253,6 +253,8 @@ git apply --reject xxx.patch
 
 <fix ...>
 
+git add  添加修改的文件
+
 git am --resolved
 
 
