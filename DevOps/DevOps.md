@@ -11,8 +11,10 @@ refer:
 
 ![DevOps](http://www.collab.net/sites/all/themes/collabnet/_media/solutions/devops/solution-s-curve.png)
 
-因為業務為了滿足客戶或是為了拿到案子，總是會隨著「情勢」的變化而要求軟體開發人員做「Change」，所以，軟體開發人員都會覺業務都在亂搞，只想操死他們而已，同樣的情況也會發生在軟體開發人員和軟體維運人員的身上，軟體開發人員為了滿足使用者的需求，也會不斷的上新版本，但是，新版本通常是會造成新問題的，因此，會增加軟體維運人員的工作量，所以，軟體維運人員會傾向不要修改，可是，軟體開發人員則是不得不改，兩者之間就會產生一個叫做「Wall of Confusion」的東西哩 !
+「持續交付(Continous Delivery)」是將新的特性儘快交付到最終使用者(end-user)的手中。
+盡快收集使用者回饋，及時及持續修正Plan & Business Model Canvas.
 
+而因為業務為了滿足客戶或是為了拿到案子，總是會隨著「情勢」的變化而要求軟體開發人員做「Change」，所以，軟體開發人員都會覺業務都在亂搞，只想操死他們而已，同樣的情況也會發生在軟體開發人員和軟體維運人員的身上，軟體開發人員為了滿足使用者的需求，也會不斷的上新版本，但是，新版本通常是會造成新問題的，因此，會增加軟體維運人員的工作量，所以，軟體維運人員會傾向不要修改，可是，軟體開發人員則是不得不改，兩者之間就會產生一個叫做「Wall of Confusion」的東西哩 !
 
 DevOps開發方法是敏捷（Agile）以及精實（Lean）開發概念的延伸，有別於傳統開發流程，DevOps開發方法打破每個獨立的階段，從需求分析、系統設計、程式開發、安裝測試、後續維護再回到第一階段，形成一個封閉迴圈。
 
@@ -25,13 +27,13 @@ DevOps開發方法要開發人員持續改善並整合不同的階段，加以�
 >> 3. Think: 先做 Design Thinking 再 DevOps? 還是 DevOps 是 Design Thinking 的一部分?
 
 
+
 Develop Process
 ---------------
 
-
 ### Plan
 
-Design Thinking & UX + Business Model Canvas 
+Design Thinking & UX + Business Model Canvas
 
 
 Project Management Tools:
@@ -54,39 +56,19 @@ Bug Tracking System:
 * Mantis
 ```
 
-### Code
-
-Hacking:
-
-```
-* Vim
-* XCode
-* Eclipise
-```
-
-Version Control:
-
-```
-* Git
-* Github
-* Gitlab
-* Gerrit
-```
-
-```
-* SourceTree
-```
-
 ### Build & Unit Testing:
+
+build tools:
+```
+* Maven
+* Gradle
+```
 
 Continuous Integration tools:
 
 ```
-* Jenkins 
-* Maven 
-* Ant 
-* Gradle 
-* CircleCI
+* Jenkins
+* Gitlab-CI
 ```
 
 ### Release & Deployment
@@ -104,43 +86,36 @@ Continous Deployment to different environment:
 Infrastructure as a Service
 
 ```
-* Amazon Web Services 
-* Rackspace
-* Cloud Foundry
-* Azure
+* Amazon Web Services (AWS)
 * OpenStack
 ```
 
 Virtualization Platforms
 
 ```
-* VMware 
+* VMware
 * KVM
-* Xen
-* VirtualBox 
-* Vagrant 
+* VirtualBox
 ```
 
 Containerization Tools
 
 ```
-* LXC
-* Solaris Containers
-* Docker 
+* Docker
 ```
 
-Linux OS Installation
+Linux OS Installation On Bare Machine
 
 ```
-* Kickstart 
-* Cobbler 
+* Kickstart
+* Cobbler
 * MAAS
 ```
 
 Configuration Management
 
 ```
-* Puppet + MCollective 
+* Puppet + MCollective
 * Chef
 * SaltStack
 * Ansible
@@ -150,15 +125,8 @@ Application Deployment
 
 ```
 * Fabric
-* Capistrano 
+* Capistrano
 ```
-
-### Continous Delivery
-
-「持續交付」是將新的特性儘快交付到最終使用者(end-user)的手中。
-
-盡快收集使用者回饋，及時及持續修正Plan & Business Model Canvas.
-
 
 
 Other Useful Tools
@@ -167,94 +135,82 @@ Other Useful Tools
 refer:
 - https://medium.com/@arashsami/a-short-list-of-devops-tools-dd786ce32da8
 
-Application Servers:
+### Application Servers:
 
-	1. JBoss
-	2. Tomcat
-	3. Jetty 
-	4. Glassfish
-	5. Websphere
-	6. Weblogic
+* JBoss
+* Tomcat
+* Jetty
+* Glassfish
+* Websphere
+* Weblogic
 
-Web Servers
+### Web Servers
 
-	1. nginx 
-	2. Apache 
-	3. IIS
+* **nginx**
+* Apache
+* IIS
 
-Queues, Caches, etc.
+### Queues, Caches, etc.
 
-	1. ActiveMQ
-	2. RabbitMQ
-	3. memcache
-	4. varnish
-	5. squid
+* ActiveMQ
+* **RabbitMQ**
+* **memcache**
+* varnish
+* squid
 
-Databases
+### Databases
 
-	1. Percona Server 
-	2. MySQL
-	3. PostgreSQL
-	4. OpenLDAP
-	5. MongoDB
-	6. Cassandra
-	7. Redis 
-	8. Oracle
-	9. MS SQL
+* MySQL
+* **PostgreSQL**
+* OpenLDAP
+* **MongoDB**
+* Cassandra
+* Redis
+* **Oracle**
+* MS SQL
 
-Monitoring, Alerting, and Trending
+### Monitoring, Alerting, and Trending
 
-	1. New Relic 
-	2. Nagios 
-	3. Icinga
-	4. Graphite
-	5. Ganglia
-	6. Cacti 
-	7. PagerDuty  j
-	8. Sensu
+* New Relic
+* **Nagios**
+* Icinga
+* Graphite
+* Ganglia
+* Cacti
+* PagerDuty  j
+* Sensu
 
-Logging
+### Logging
 
-please refer: 
+please refer:
 
 - http://blog.takipi.com/the-7-log-management-tools-you-need-to-know/
 - http://www.findbestopensource.com/tagged/log-analysis
 
-```
 SaaS:
 
- 1. PaperTrail 
- 2. Loggly
- 3. Splunk
- 4. SumoLogic
+* PaperTrail
+* Loggly
+* Splunk
+* SumoLogic
 
 OpenSource:
 
- 1. Logstash
- 2. [graylog2](http://graylog2.org/)
-```
+* Logstash
+* [graylog2](http://graylog2.org/)
 
-Process Supervisors
+### Process Supervisors
 
-	1. Monit 
-	2. runit
-	3. Supervisor
-	4. god
-	5. Blue Pill
-	6. Upstart
-	7. systemd
+* Monit
+* runit
+* **Supervisor**
+* god
+* Blue Pill
+* Upstart
+* systemd
 
-Security
+### Security
 
-	1. Snorby Threat Stack 
-	2. Tripwire
-	3. Snort
-
-Miscellaneous Tools
-
-	1. Multihost SSH Wrapper 
-	2. Code Climate
-	3. iPerf 
-	4. lldpd 
-	5. HipChat
-
+* Snorby Threat Stack
+* Tripwire
+* Snort
