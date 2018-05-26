@@ -13,9 +13,3 @@ It really annoyed me when I need to find some notes.
 
 So I decide to gather my notes into one place.
 
-
-## About Me
-
-* https://www.cakeresume.com/tsungyi
-* https://tw.linkedin.com/in/tsungyi
-* https://github.com/BrandonTsai

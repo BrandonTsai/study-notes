@@ -4,28 +4,12 @@ DevOps
 Introduction
 ------------
 
-refer:
-- http://www.ithome.com.tw/news/87144
-- http://www.arthurtoday.com/2011/10/devops.html#ixzz3aAnmI5mf
+A good talk about DevOps
+https://theagileadmin.com/what-is-devops/
 
+>> DevOps is the practice of operations and development engineers participating together in the entire service lifecycle, from design through the development process to production support.
 
-![DevOps](http://www.collab.net/sites/all/themes/collabnet/_media/solutions/devops/solution-s-curve.png)
-
-「持續交付(Continous Delivery)」是將新的特性儘快交付到最終使用者(end-user)的手中。
-盡快收集使用者回饋，及時及持續修正Plan & Business Model Canvas.
-
-而因為業務為了滿足客戶或是為了拿到案子，總是會隨著「情勢」的變化而要求軟體開發人員做「Change」，所以，軟體開發人員都會覺業務都在亂搞，只想操死他們而已，同樣的情況也會發生在軟體開發人員和軟體維運人員的身上，軟體開發人員為了滿足使用者的需求，也會不斷的上新版本，但是，新版本通常是會造成新問題的，因此，會增加軟體維運人員的工作量，所以，軟體維運人員會傾向不要修改，可是，軟體開發人員則是不得不改，兩者之間就會產生一個叫做「Wall of Confusion」的東西哩 !
-
-DevOps開發方法是敏捷（Agile）以及精實（Lean）開發概念的延伸，有別於傳統開發流程，DevOps開發方法打破每個獨立的階段，從需求分析、系統設計、程式開發、安裝測試、後續維護再回到第一階段，形成一個封閉迴圈。
-
-DevOps開發方法要開發人員持續改善並整合不同的階段，加以組織過去任務所發生的事，開發人員需要自動化的工作流程，自動化開發周期的每一個階段，不僅需要自動化測試，還要自動化部署，且提供自動化的數據給所有參與的人，讓所有人可以合作。
-
-
->> Notes:
->> 1. DevOps = Agile/Lean + Automatic ?
->> 2. 永遠有更好的工具和方法，Keep Learning, Keep Fighting.
->> 3. Think: 先做 Design Thinking 再 DevOps? 還是 DevOps 是 Design Thinking 的一部分?
-
+Better methods/tools are developed every once in a while. Keep Learning, Keep Fighting.
 
 
 Develop Process
@@ -39,10 +23,11 @@ Design Thinking & UX + Business Model Canvas
 Project Management Tools:
 
 ```
-* Trello
+* Trello/Zenhub
 * Redmine
 * Slack
 ```
+
 Document Tools:
 
 ```
@@ -50,6 +35,7 @@ Document Tools:
 * Gitbook
 * Readthedoc
 ```
+
 Bug Tracking System:
 
 ```
@@ -69,6 +55,7 @@ Continuous Integration tools:
 ```
 * Jenkins
 * Gitlab-CI
+* Travis-CI
 ```
 
 ### Release & Deployment
@@ -79,7 +66,9 @@ Continous Deployment to different environment:
 * Production Environment
 
 為了確保部署軟體的功能一致，「持續部署」必須採用同一個包裝好的套件(package)，
+To make sure the consistance, same package must be used during the CD process.
 
+Configuraiton Externalization: DO NOT configure settings by hard-coded
 另一個達到「持續部署」的重要手段是要針對軟體可以客制化的功能，將其組態/設定外部化(configuraiton externalization)，簡單點講：就是不要將設定(settings)寫死(hard-coded)在程式碼裡面。
 
 
@@ -121,6 +110,7 @@ Configuration Management
 * Ansible
 * Ubuntu Juju
 ```
+
 Application Deployment
 
 ```
@@ -146,7 +136,7 @@ refer:
 
 ### Web Servers
 
-* **nginx**
+* **Nginx**
 * Apache
 * IIS
 
@@ -208,6 +198,7 @@ OpenSource:
 * Blue Pill
 * Upstart
 * systemd
+* [pm2](http://pm2.keymetrics.io/)
 
 ### Security
 
