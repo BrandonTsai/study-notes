@@ -1,6 +1,6 @@
 # About Me
 
-DevOps engineer with 1 year Android experience. Have the passion for improving CI/CD process, backend service management and mobile applications development. Extensive experience in Django Rest Framework API service, Docker, OpenStack Android application development, and automatic testing. 
+5+ years DevOps engineer with 1 year Android experience. Have the passion for improving CI/CD process, backend service management and mobile applications development. Extensive experience in Django Rest Framework API service, Docker, OpenStack, AWS, Android application development, and automatic testing. 
 
 * https://www.cakeresume.com/tsungyi
 * https://tw.linkedin.com/in/tsungyi
