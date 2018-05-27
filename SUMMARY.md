@@ -2,8 +2,7 @@
 
 * [Introduction](README.md)
 * [About Me](AboutMe/aboutme.md)
-* Agile
-    * [DevOps](DevOps/DevOps.md)
+* [DevOps](DevOps/DevOps.md)
 * CI/CD tools
     * Git
         * [Basic](DevOps/Git/basic.md)
@@ -31,6 +30,13 @@
     * [Debian Repository](Linux/Debian/local_repo.md)
     * [KVM](Linux/KVM.md)
     * [Storage System](Linux/storage.md)
+    * Network:
+        * [DNS](Linux/Network/DNS.md)
+        * [Load Balance](Linux/Network/Load_Balancing.md)	
+        * [SSL Certification](Linux/Network/SSL_Certificates.md)
+        * [Firewall](Linux/Network/Firewall.md)		
+        * [SMTP](Linux/Network/SMTP.md)			
+        * [TCP/UDP](Linux/Network/TCP_and_UDP.md)
 * Android Development
     * [adb usage](Android/adb.md)
     * [Basic Concept](Android/basic.md)
