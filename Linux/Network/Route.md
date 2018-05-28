@@ -51,30 +51,31 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 ### (2) Adds a route to the network
 
-**route add -net <network_address> gw <gateway> <interface_name>** 
+**route add -net \<network_address\> gw \<gateway\> \<interface_name\>** 
 - to indicate the destination network we want to join. We must specify the mask of the network and the gateway to use.
 
 ```
 route add -net 10.0.0.0/8 gw 192.168.1.1 eth1
 ```
 
-**route add -host <host_IP_address> gw <gateway>**
+**route add -host \<host_IP_address\> gw \<gateway>**
 - to indicate a specific host that we want to join
 
 ```
 route add -host 10.0.0.10 gw 192.168.1.1 eth1
 ```
-**Add Default route**
+
+Add Default route:
 ```
 route add default gw 192.168.1.10
 ```
 
 ### (3) Deleting a route rule
 
-**route del -net <network_address> gw <gateway> <interface_name>** 
+**route del -net \<network_address> gw \<gateway> \<interface_name>** 
 - to delete a destination network from the routing table
 
 ### (4) Reject a route
 
-**route  add -host <host_IP_address> reject** 
+**route  add -host \<host_IP_address> reject** 
 - to ban an IP address but it is still on the routing table.

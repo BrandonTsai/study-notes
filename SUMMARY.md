@@ -46,7 +46,6 @@
     * [Broadcast](Android/broadcast.md)
     * [Menu](Android/menu.md)
     * [ListView](Android/ListView/listView.md)
-(Android/ExpandableListView.md)
     * [Widgets](Android/widgets.md)
 * [Android Testing](Android/testing/summary.md)
     * [Code Analysis](Android/testing/code_check.md)
