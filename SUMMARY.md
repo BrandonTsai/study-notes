@@ -40,6 +40,10 @@
         * [TCP/UDP](Linux/Network/TCP_and_UDP.md)
         * [Netstat](Linux/Network/Netstat.md)
         * [Route](Linux/Network/Route.md)
+* Python
+    * [args](Python/*args_and_**kwargs.md)
+    * [Data Model](Python/data_model.md)
+    * [test tool](Python/test.md)
 * Android Development
     * [adb usage](Android/adb.md)
     * [Basic Concept](Android/basic.md)
