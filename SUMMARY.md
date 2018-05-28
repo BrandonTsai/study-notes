@@ -18,16 +18,17 @@
     * [PostgreSQL](Database/postgreSQL.md)
     * [MySQL](Database/mysql.md)
 * Linux
-    * [File Management](Linux/file.md)
+    * Package Management:
+        * [Debian Local Repository](Linux/PackageManage/Debian-local_repo.md)
+    * File Management:
+        * [Basic Command](Linux/FileManage/basic_cmd.md)
+        * [Compression](Linux/FileManage/compression.md)
     * [Pipe commands](Linux/pipe.md)
-    * [Compression](Linux/compression.md)
     * [Regular Expression](Linux/regular_expression.md)
     * [Shell Scripts](Linux/shell.md)
-    * [Rsync](Linux/rsync.md)
     * [Job Schedule](Linux/cron.md)
     * [SSH](Linux/ssh.md)
     * [IPMItool](Linux/ipmitool.md)
-    * [Debian Repository](Linux/Debian/local_repo.md)
     * [KVM](Linux/KVM.md)
     * [Storage System](Linux/storage.md)
     * Network:
@@ -37,6 +38,8 @@
         * [Firewall](Linux/Network/Firewall.md)		
         * [SMTP](Linux/Network/SMTP.md)			
         * [TCP/UDP](Linux/Network/TCP_and_UDP.md)
+        * [Netstat](Linux/Network/Netstat.md)
+        * [Route](Linux/Network/Route.md)
 * Android Development
     * [adb usage](Android/adb.md)
     * [Basic Concept](Android/basic.md)

@@ -11,10 +11,7 @@ refer:
 
 ### SATA vs. SAS:
 
-![SATA vs. SAS](http://www.serialstoragewire.net/images/articles/interface_comparison.gif)
-
 SATA/USB介面的磁碟根本就沒有一定的順序，那如何決定他的裝置檔名呢？ 這個時候就得要根據Linux核心偵測到磁碟的順序了！
-
 
 Partition
 ---------
