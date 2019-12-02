@@ -1,0 +1,2 @@
+**User pools**: user directories that provide sign-up and sign-in options for your web and mobile app users.
+**Identity pools**: Provide AWS credentials to grant your users access to other AWS services
