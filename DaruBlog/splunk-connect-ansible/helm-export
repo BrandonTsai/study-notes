@@ -1,0 +1,22 @@
+#!/bin/bash
+
+export(){
+  folder_name=${PWD##*/}
+  #outputDir="/tmp/${folder_name}/$(date +%m%d)"
+  outputDir="/tmp/${folder_name}"
+
+  if [ -d ${outputDir} ]; then 
+    rm -rf ${outputDir}/*
+  else
+    mkdir -p ${outputDir}
+  fi
+
+  helm template --values ./values.yaml \
+  -n ${folder_name} \
+  --output-dir ${outputDir} ./
+
+}
+
+command -v helm || (echo "helm client does not exist"; exit 1)
+export
+

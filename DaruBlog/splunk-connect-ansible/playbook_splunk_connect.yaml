@@ -1,0 +1,4 @@
+- name: "Install splunk-connect"
+  hosts: masters[1]
+  roles:
+  - {role: "splunk-connect", tags: ["splunk-connect"]}

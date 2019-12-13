@@ -1,0 +1,162 @@
+- name: "check helm client exist"
+  shell: "command -v helm"
+  ignore_errors: yes
+  register: check_helm
+
+- name: "copy helm if not exist"
+  copy:
+    src: helm
+    dest: "/usr/bin/helm"
+    mode: 0777
+  when: check_helm.failed
+
+- name: "check helm client again"
+  shell: "command -v helm"
+  when: check_helm.failed
+
+### switch project
+- set_fact:
+    project_name: splunk-connect
+
+- name: "oc switch to new project"
+  shell: "oc project {{project_name}}"
+  ignore_errors: yes
+  register: switch_proj
+
+- name: "oc create new project if project does not exist"
+  shell: "oc adm new-project {{project_name}} --node-selector=''"
+  when: switch_proj.failed
+
+- name: "check current project"
+  shell: "oc project"
+  register: current_proj
+  retries: 3
+  delay: 3
+  until: current_proj.rc == 0
+  failed_when: current_proj.stdout.find("{{project_name}}") == -1
+
+- name: "copy splunk-connect-for-k8s.tar.gz"
+  unarchive:
+    src: splunk-connect-for-kubernetes-1.2.0.tgz
+    dest: "/tmp/"
+
+- set_fact:
+    logging_charts: "/tmp/splunk-connect-for-kubernetes/charts/splunk-kubernetes-logging"
+    metrics_charts: "/tmp/splunk-connect-for-kubernetes/charts/splunk-kubernetes-metrics"
+    objects_charts: "/tmp/splunk-connect-for-kubernetes/charts/splunk-kubernetes-objects"
+    output_folder: /tmp/helm
+
+### Apply quay pull secrets
+- name: "copy quay pull secrets"
+  copy:
+    src: quay-pull-secrets/{{cluster_region}}-quay-pull-secret.yml
+    dest: "/tmp/quay-pull-secret.yml"
+    mode: 0744
+
+- name: "apply quay pull secrets"
+  shell: "oc apply -n {{project_name}} -f /tmp/quay-pull-secret.yml"
+
+### apply logging
+- name: "create output folder for logging"
+  file:
+    path: "{{output_folder}}"
+    state: directory
+
+- name: "logging | replace values"
+  template:
+    src: logging-values.yaml
+    dest: "{{logging_charts}}/ocp-values.yaml"
+    mode: 0744
+
+
+- name: "logging | replace daemonset"
+  copy:
+    src: logging-daemonset.yaml
+    dest: "{{logging_charts}}/templates/daemonset.yaml"
+    mode: 0744
+
+- name: "logging | replace configmap"
+  copy:
+    src: logging-configMap.yaml
+    dest: "{{logging_charts}}/templates/configMap.yaml"
+    mode: 0744
+
+- name: "logging | run helm template"
+  shell: "helm template --values {{logging_charts}}/ocp-values.yaml -n splunk-kubernetes-logging --output-dir {{output_folder}} {{logging_charts}}/"
+  args:
+    chdir: "{{ logging_charts }}"
+
+- name: "logging | create service account"
+  shell: "oc create sa splunk-kubernetes-logging"
+  ignore_errors: yes
+
+- shell: "logging | oc adm policy add-scc-to-user privileged -z splunk-kubernetes-logging"
+  ignore_errors: yes
+
+- name: "logging | apply {{output_folder}}/splunk-kubernetes-logging/templates"
+  shell: "oc apply -n {{project_name}} -f {{output_folder}}/splunk-kubernetes-logging/templates"
+
+### apply metrics
+- name: "metrics | replace values"
+  template:
+    src: metrics-values.yaml
+    dest: "{{metrics_charts}}/ocp-values.yaml"
+    mode: 0744
+
+- name: "metrics | replace configmap"
+  copy:
+    src: metrics/configmap.yaml
+    dest: "{{metrics_charts}}/templates/configMap.yaml"
+    mode: 0744
+
+- name: "metrics | replace depolyment"
+  copy:
+    src: metrics/deployment.yaml
+    dest: "{{metrics_charts}}/templates/deployment.yaml"
+    mode: 0744
+
+- name: "metrics | replace depolyment"
+  copy:
+    src: metrics/deploymentMetricsAggregator.yaml
+    dest: "{{metrics_charts}}/templates/deploymentMetricsAggregator.yaml"
+    mode: 0744
+
+# - shell: "oc adm policy add-scc-to-user anyuid -z splunk-kubernetes-metrics"
+#   ignore_errors: yes
+
+- name: "metrics | run helm template"
+  shell: "helm template --values {{metrics_charts}}/ocp-values.yaml -n splunk-kubernetes-metrics --output-dir {{output_folder}} ./"
+  args:
+    chdir: "{{ metrics_charts }}"
+
+- name: "metrics | apply {{output_folder}}/splunk-kubernetes-metrics/templates"
+  shell: "oc apply -n {{project_name}} -f {{output_folder}}/splunk-kubernetes-metrics/templates"
+
+### apply objects
+
+- name: "objects | replace values"
+  template:
+    src: objects-values.yaml
+    dest: "{{objects_charts}}/ocp-values.yaml"
+    mode: 0744
+
+- name: "objects | replace depolyment"
+  copy:
+    src: objects-deployment.yaml
+    dest: "{{objects_charts}}/templates/deployment.yaml"
+    mode: 0744
+
+- shell: oc adm policy add-cluster-role-to-user cluster-reader -z splunk-kubernetes-objects --rolebinding-name=splunk-connect-objects-reader
+  ignore_errors: yes
+
+- name: "objects | run helm template"
+  shell: "helm template --values {{objects_charts}}/ocp-values.yaml -n splunk-kubernetes-objects --output-dir {{output_folder}} ./"
+  args:
+    chdir: "{{ objects_charts }}"
+
+- name: "objects | apply {{output_folder}}/splunk-kubernetes-objects/templates"
+  shell: "oc apply -n {{project_name}} -f {{output_folder}}/splunk-kubernetes-objects/templates"
+
+# ### Clean up everything
+# - name: "remove charts folder"
+# - name: "remove output folder"

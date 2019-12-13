@@ -1,0 +1,2 @@
+splunk_protocol: https
+splunk_insecureSSL: "true"

@@ -16,6 +16,13 @@ Splunk-connect-for-kubernetes contains 3 componenets:
 | objects   | To collect kubernetes resource status by calling the Kubernetes API. |
 
 
+Prerequisites
+--------------
+
+- Allow connection from kubernetes to Splunk on HEC port 8088
+- Access to Dockerhub to pull images or import these images to your private registry.
+- Helm 3
+- splunk-connect-for-k8s v1.3.0
 
 Splunk Setting
 --------------
@@ -51,16 +58,14 @@ Note:
 For app: "kubernetes", copy that app folder from /opt/splunk/etc/apps to /opt/splunk/etc/master-apps/
 
 
-
 **Step 2.** On Splunk UI,
 
 - Click Settings > Indexer Clustering.
 - Click Edit > Configuration Bundle Actions.
 - Click Validate and Check Restart to check the bundle is valid
-If ok Click Push
+- Click Push if the "Validate and Check Restart" result is fine.
 
-
-**Step 3.** Confirm Splunk data ok
+**Step 3.** Check the splunk data
 
 Check that any indexer replication issue has resolved and that Splunk is showing green. This will cause the Indexer servers to restart on initial push
 
