@@ -1,5 +1,10 @@
 
 
+```
+skopeo copy --src-tls-verify=false --dest-tls-verify=false docker://registry.redhat.io/rhscl/nginx-116-rhel7 docker://quay-eu-uat.windmill.local/application-images/test:1
+```
+
+
 - name: create clair db user
   shell: docker exec -i pgsql /bin/bash -c 'createuser  {{ clair_pgsql_user }}'
   when: check_clair_user.rc != 0
