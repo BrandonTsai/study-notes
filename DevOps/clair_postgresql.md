@@ -1,3 +1,5 @@
+curl -s -X GET -k https://$QUAY_HOST/api/v1/repository/$QUAY_REPO/image/$IMAGE_ID/security?vulnerabilities=true \
+-H "Authorization: Bearer $QUAY_API_TOKEN" -H "Content-Type: application/json"
 
 docker login -u="application-images+jenkins" -p="6BC26ZL0CUZQTJKL1SWKZIO9ZD58TDLS8O6VONE4VVNF9M1ZQGGMCVBXORNC0BNG" quay-eu-uat.windmill.local
 docker pull quay-eu-uat.windmill.local/application-images/test:1
