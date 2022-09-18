@@ -1,5 +1,0 @@
-| mstats max(_value) as "cAvg" where index=ocp_test_metrics AND metric_name="kube.node.network.tx_bytes" span=1m by node
-| sort node | streamstats current=f global=f window=1 first(cAvg) as pAvg by node
-| eval nodeDiff=cAvg-pAvg
-| eval nodeDiffMB=round(nodeDiff/1024/1024,3)
-| timechart avg(nodeDiffMB) as "Diff-MB" span=1m by node
