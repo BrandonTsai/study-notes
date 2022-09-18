@@ -12,30 +12,29 @@ Every element in a Array or Slice must be of same types. The elements are stored
 
 
 Array
--------
+=====
 
-Declairing an array:
+### Declairing an array:
 
 ```go
 // An array of 5 integers with default value 0.
 a := [5]int{}
-fmt.Println(a)
 
 // An array with initial value
 b := [5]int{2, 4, 6, 8, 10}
-fmt.Println(b)
 
 // An array of 5 integers and initial 2 elements
 // output = [2 4 0 0 0]
 b := [5]int{2, 4}
-fmt.Println(b)
 
 //Letting Go compiler infer the length of the array
 a := [...]int{1, 3, 5, 7, 9}
-fmt.Println(a)
+
 ```
 
-Array is pass by value, this means that the value of elements are copied when assigning one array to another. If you make any changes to this copied array, the original one won’t be affected and will remain unchanged. For example:
+### Pass-By-Value
+
+Array is **pass by value**, this means that the value of elements are copied when assigning one array to another. If you make any changes to this copied array, the original one won’t be affected and will remain unchanged. For example:
 
 
 ```go
@@ -48,7 +47,7 @@ fmt.Println(a) // output = [2 , 4, 6, 8, 10]
 fmt.Println(b) // output = [0 , 4, 6, 8, 10]
 ```
 
-Iterating over an array:
+### Iterating/Loop:
 
 ```go
 a := [5]int{2, 4, 6, 8, 10}
@@ -63,17 +62,16 @@ for index, value := range a {
     fmt.Println(index, value)
 }
 
-/*
-    Go compiler doesn’t allow creating variables that are never used.
-    You can fix this by using an _ (underscore) in place of index
-*/
+// Go compiler doesn’t allow creating variables that are never used.
+// You can fix this by using an _ (underscore) in place of index
+
 for _, value := range a {
     fmt.Println(value)
 }
 ```
 
 
-Multidimensional arrays:
+### Multidimensional Array:
 
 ```go
 a := [2][3]int{
@@ -97,51 +95,73 @@ for _, raw := range a {
 
 
 Slice
-------
+======
 
 The slice type is an abstraction built on top of Go’s array type. But unlike an array type, a slice does not have specified fix length.
 
-Declair slices:
+### Declair Slices:
 
 ```go
 // Declair an empty slice which length is 0
 a := []int{}
-fmt.Println(a, len(a))
 
 // Declair a slice of lengh 5 and fill with default value via "make" . function
 b := make([]int, 5)
-fmt.Println(b, len(b))
-
 
 // Decalre a slice with initial value
 c := []int{2, 4, 6, 8}
-fmt.Println(c, len(c))
 ```
 
-Modify slices:
+### Access last element
+
+Go doesn't support negative indexing (`a[-1]`) like Python does .
+Use the index `len(a)-1` to access the last element of a slice or array a.
+
+### Append new elements:
 
 ```go
 // Declair an empty slice
 a := []int{}
 b := []int{2, 4}
-fmt.Println(a, len(a))
 
 // add elements via append function
 a = append(a, 1)
 a = append(a, 2, 3)
-fmt.Println(a, len(a))
 
 // apend a slice to another slice.
 // the ... lets you pass multiple arguments to a variadic function from a slice
 a = append(a, b...)
-fmt.Println(a, len(a))
-
-// the is no function for removing elements from slices
-// you can use append function to re-slice
-index := 3 // the index of element you want to remove.
-a = append(a[:index], a[index+1:]...)
-fmt.Println(a, len(a))
 ```
+
+### Remove an element at a give index
+
+there is no function for removing elements from slices
+you can use append function to "re-slice".
+
+```go
+func remove(a []int, index int) []int {
+    a = append(a[:index], a[index+1:]...)
+    return a
+}
+```
+
+### Insert a value at a given index
+
+Same as removing an element. we can to use append function to "re-slice".
+
+```go
+func insert(a []int, index int, value int) []int {
+    if len(a) == index { // nil or empty slice or after last element
+        return append(a, value)
+    }
+    a = append(a[:index+1], a[index:]...) // index < len(a)
+    a[index] = value
+    return a
+}
+```
+
+
+### Pass-By-Reference
 
 Unlike Array, slice is pass by reference, this means when any changes being made to this copied array, the original one is affected as well. For example:
 
@@ -160,6 +180,8 @@ fmt.Println(a) //output = [2 5 3 4]
 fmt.Println(b) //output = [2 5 3 4]
 fmt.Println(c) //output = [5 3 4]
 ```
+
+### Copy
 
 If you want to copy the value from one slice to another slice, you should use `copy(dst, src)` function. It copies elements from the source to the destination and returns the number of elements that are copied. The number of elements copied will be the minimum of len(src) and len(dst)
 
@@ -216,7 +238,7 @@ fmt.Println(s2, len(s2), reflect.TypeOf(s2).Kind()) //output = [4 2 4 6]
 ```
 
 
-Iterating over a slice:
+### Iterating/Loop:
 
 ```go
 s := []int{2, 4, 6, 8, 10}
@@ -233,7 +255,7 @@ for _, value := range s {
 ```
 
 
-Multidimensional slices:
+### Multidimensional Slices:
 
 ```go
 s := [][]int{
@@ -248,9 +270,8 @@ for i := 0; i < len(s); i++ {
 }
 ```
 
-
-Sort
-----
+Sort Slices/Arrays
+=================
 
 The `sort` package in Go provides several convenience methods for sorting a slice of primitive types. The following example demonstrates how to sort a slice of strings, integers, and floats in Go:
 
