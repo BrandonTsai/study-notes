@@ -46,32 +46,68 @@ s consists only of printable ASCII characters.
 Hint
 ====
 
-Converting string into lowercase/upper letters: 
+### Converting string into lowercase/upper letters:
 
-- `newString = string.lower()`
-- `newString = string.upper()`
 
-Removing all non-alphanumeric characters: 
+Python
+
+```python
+lowerStr = oldStr.lower()
+upperStr = oldStr.upper()
+```
+
+Go
+
+```go
+import "strings"
+lowerStr := strings.ToLower(oldStr)
+upperStr := strings.ToUpper(oldStr)
+```
+
+
+### Removing all non-alphanumeric characters:
+
+
+**Python**
+
 We can use the `isalnum()` method to check whether a given character or string is alphanumeric or not. We can compare each character individually from a string, and if it is alphanumeric, then we combine it using the `join()` function.
 
 ```python
-string_value = "alphanumeric@123__"
-s = ''.join(ch for ch in string_value if ch.isalnum())
-print(s)
+oldStr = "alphanumeric@123__"
+newStr = ''.join(ch for ch in oldStr if ch.isalnum())
 ```
 
-another way is using `filter()` function to construct an iterator from components of the iterable object and filters the object’s elements using a function.
+another way is using [`filter()`](https://docs.python.org/3/library/functions.html#filter) function to construct an iterator from components of the iterable object and filters the object’s elements using a function.
 
+Note that filter(function, iterable) is equivalent to the generator expression (item for item in iterable if function(item))
 
 For example,
 
 ```python
-string_value = "alphanumeric@123__"
-s = ''.join(filter(str.isalnum, string_value))
-print(s)
+oldStr = "alphanumeric@123__"
+newStr = ''.join(filter(str.isalnum, oldStr))
 ```
 
 
+**Go**
+
+Go does not have `isalnum` method, but we can use regular expression to remove all NonAlphanumeric characters in the string.
+
+```go
+package main
+
+import (
+	"fmt"
+	"regexp"
+)
+
+func main() {
+	oldStr := "alphanumericABCXYZ_-@123"
+    nonAlphanumericRegex := regexp.MustCompile(`[^a-zA-Z0-9 ]+`)
+	newStr := nonAlphanumericRegex.ReplaceAllString(oldStr, "")
+	fmt.Println(newStr)
+}
+```
 
 Answer
 ======
@@ -96,6 +132,8 @@ class Solution:
 Approach 2: Compare character one by one from forward and backward
 ------------
 
+Python
+
 ```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
@@ -110,4 +148,30 @@ class Solution:
                 return False
 
         return True
+```
+
+Go
+
+```go
+import (
+    "strings"
+    "regexp"
+)
+
+func isPalindrome(s string) bool {
+    nonAlphanumericRegex := regexp.MustCompile(`[^a-z0-9]+`)
+    newS := nonAlphanumericRegex.ReplaceAllString(strings.ToLower(s), "")
+
+    i := 0
+    j := len(newS)-1
+    for i < j {
+        if newS[i] == newS[j] {
+            i++
+            j--
+        } else {
+            return false
+        }
+    }
+    return true
+}
 ```

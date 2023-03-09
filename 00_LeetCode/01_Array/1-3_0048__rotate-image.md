@@ -39,10 +39,14 @@ swap two variables in python
 a, b = b, a
 ```
 
+```go
+a, b = b, a
+```
 
 Answer
 ======
 
+![](0048.png)
 
 ```python
 class Solution:
@@ -61,5 +65,26 @@ class Solution:
         for i in range(n):
             for j in range(n//2):
                 matrix[i][j], matrix[i][n-j-1] = matrix[i][n-j-1], matrix[i][j]
+
+```
+
+Go
+
+```go
+func rotate(matrix [][]int)  {
+    n := len(matrix)
+    //transpose
+    for i := 0 ; i < n-1 ; i++ {
+        for j := i+1 ; j < n ; j++ {
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+        }
+    }
+    //refelct
+    for i := 0 ; i < n ; i++ {
+        for j := 0; j < n/2; j++ {
+            matrix[i][j], matrix[i][n-j-1] = matrix[i][n-j-1], matrix[i][j]
+        }
+    }
+}
 
 ```

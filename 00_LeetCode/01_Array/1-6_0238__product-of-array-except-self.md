@@ -42,6 +42,29 @@ Hint
 
 How to initial list with fixed lengh and initial value.
 
+Python
+
+```python
+a = [1] * 5 # a = [1, 1, 1, 1, 1]
+```
+
+Go can not initial array with fixed length and initial value.
+You can use `make` function to initial an array with fixed length, which initial value is 0
+Then initial value with for loop.
+
+```go
+
+func main() {
+	n := 10
+	ans := make([]int, n)
+	for i := range ans {
+		ans[i] = 1
+	}
+	fmt.Println(ans)
+}
+
+```
+
 
 Answer
 =====
@@ -79,20 +102,41 @@ To solve the follow up question, we can replace the right array with single vari
 ```python
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        l = len(nums)
-        left = [1] * l
+        n = len(nums)
+        left = [1] * n
         right = 1
 
-        for i in range(l-1):
+        for i in range(n-1):
             left[i+1] = left[i]*nums[i]
 
-        for i in range(l-2, -1, -1):
+        for i in range(n-2, -1, -1):
             right = right * nums[i+1]
             left[i] = left[i] * right
 
         return left
 ```
 
+Go
 
+```go
+func productExceptSelf(nums []int) []int {
+    n := len(nums)
+    left := make([]int, n)
+    right := 1
+
+    left[0] = 1
+    for i := 0 ; i < n-1 ; i++ {
+        left[i+1] = left[i]*nums[i]
+    }
+
+    for i := n-2 ; i > -1 ; i-- {
+        right = right * nums[i+1]
+        left[i] = left[i] * right
+    }
+
+    return left
+}
+
+```
 
 

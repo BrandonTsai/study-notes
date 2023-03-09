@@ -55,12 +55,33 @@ sortedByEndPoint = [[1,2],[2,3],[1,3],[3,4]]
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         intervals.sort(key=lambda x: x[1])
-        pre = []
-        removeCount = 0
-        for interval in intervals:
-            if not pre or pre[1] <= interval[0]:
-                pre = interval
-            else:
+        pre, removeCount = 0, 0
+        for i in range(1, len(intervals)) :
+            if intervals[pre][1] > intervals[i][0]:
                 removeCount += 1
+            else:
+                pre = i
         return removeCount
+```
+
+```go
+import (
+    "sort"
+)
+
+func eraseOverlapIntervals(intervals [][]int) int {
+    sort.Slice(intervals, func(i, j int) bool {
+        return intervals[i][1] < intervals[j][1]
+    })
+    preIndex := 0
+    removeCount := 0
+    for i := 1; i < len(intervals); i++ {
+        if intervals[preIndex][1] > intervals[i][0] {
+            removeCount++
+        } else {
+            preIndex = i
+        }
+    }
+    return removeCount
+}
 ```

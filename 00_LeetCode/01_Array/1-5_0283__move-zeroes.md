@@ -31,12 +31,27 @@ Constraints:
 -231 <= nums[i] <= 231 - 1
 ```
 
+
+Hint
+====
+
+Swap two variables in python
+
+```python
+a, b = b, a
+```
+
+Swap two variables in Go
+
+```go
+a, b = b, a
+```
+
 Answer
 ======
 
 
-Approach 1: Two pointers (Optimal)
-----------
+### Two pointers (Optimal)
 
 Use one point (slow) to point out the position should be placed when a non-zerp element found in the for loop.
 
@@ -48,6 +63,8 @@ Therefore, when we encounter a non-zero element, we need to swap elements pointe
 With this invariant in-place, it's easy to see that the algorithm will work.
 
 
+Python
+
 ```python
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
@@ -56,4 +73,19 @@ class Solution:
             if nums[current] != 0:
                 nums[slow], nums[current] = nums[current], nums[slow]
                 slow += 1
+```
+
+
+Go
+
+```go
+func moveZeroes(nums []int)  {
+    slow := 0
+    for current := range nums {
+        if nums[current] != 0 {
+            nums[slow], nums[current] = nums[current], nums[slow]
+            slow += 1
+        }
+    }
+}
 ```

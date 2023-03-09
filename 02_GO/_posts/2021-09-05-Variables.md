@@ -61,6 +61,22 @@ func main() {
 }
 ```
 
+
+No Char data type
+-----------------
+
+Golang doesn’t have a `char` data type. It uses `byte` and `rune` to represent character values. The *byte* data type represents **ASCII** characters and the *rune* data type represents a more broader set of **Unicode** characters that are encoded in UTF-8 format.
+
+Characters are expressed in Golang by enclosing them in single quotes like this: 'A'.
+
+The default type for character values is rune. That means, if you don’t declare a type explicitly when declaring a variable with a character value, then Go will infer the type as rune -
+
+```go
+var firstLetter = 'A' // Type inferred as `rune`
+var lastLetter byte = 'Z' //Create a byte variable by explicitly specifying the type 
+```
+
+
 Type Inference
 --------------
 
