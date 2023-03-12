@@ -1,15 +1,6 @@
 https://www.honeybadger.io/blog/golang-logging/
 
 
-if you get following error
-```
-/Users/brandon/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/syscall_darwin.1_13.go:25:3: //go:linkname must refer to declared function or variable
-```
-
-you need to run `go get -u golang.org/x/sys` to get the latest version of sys module
-
-
-
 
 Add Log with Logrus
 --------
@@ -37,6 +28,13 @@ func main() {
 }
 
 ```
+
+if you get following error
+```
+/Users/brandon/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/syscall_darwin.1_13.go:25:3: //go:linkname must refer to declared function or variable
+```
+
+you need to run `go get -u golang.org/x/sys` to get the latest version of sys module
 
 
 Output Log To File
