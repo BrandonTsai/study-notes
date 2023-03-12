@@ -246,3 +246,38 @@ func main() {
 
 ```
 
+check the type of a variable
+----------------------------
+
+In GO, you can check the type of a variable using the reflect package.
+
+Here's an example code snippet that demonstrates how to check the type of a variable:
+
+```go
+
+package main
+
+import (
+    "fmt"
+    "reflect"
+)
+
+func main() {
+    var x int = 10
+    var y string = "Hello, World!"
+
+    fmt.Println(reflect.TypeOf(x)) // Output: int
+    fmt.Println(reflect.TypeOf(y)) // Output: string
+}
+```
+
+In this code, we first import the fmt and reflect packages. We then declare two variables x and y of different types.
+
+To check the type of a variable, we use the reflect.TypeOf() function from the reflect package. We pass the variable to this function, which returns the type of the variable. We then use the fmt.Println() function to print the type of each variable to the console.
+
+Note that the reflect package is relatively slow and should not be used for performance-critical code.
+
+
+
+
+
