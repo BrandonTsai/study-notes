@@ -95,6 +95,9 @@ func main() {
     //The client must close the response body when finished with it:
     defer resp.Body.Close()
 
+    //// Print status code of response
+    fmt.Println("Status code:", resp.StatusCode)
+
     var user User
     err = json.NewDecoder(resp.Body).Decode(&user)
     if err != nil {
