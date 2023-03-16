@@ -1,4 +1,5 @@
 Go Template
+============
 
 In Go, you can parse a file as a template and assign the output as a string variable using the template.ParseFiles() and Template.Execute() functions from the text/template package.
 
@@ -29,17 +30,14 @@ func main() {
 	}
 
 	// Execute the template with the person data and capture the output in a string
-	var output string
-	err = t.Execute(os.Stdout, p)
+    var buf bytes.Buffer
+	err = t.Execute(&buf, p)
 	if err != nil {
 		panic(err)
 	}
+    outputStr := buf.String()
+    fmt.Println(outputStr)
 
-	// Assign the output to a variable
-	output = fmt.Sprint(os.Stdout)
-
-	// Print the output
-	fmt.Println(output)
 }
 ```
 
