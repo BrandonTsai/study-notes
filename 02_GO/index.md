@@ -6,7 +6,7 @@ Introduction to Go Language
 
 Setting Up the Go Environment
 - Configuring Go workspace and environment variables
-- Github Copilot
+- Basic toolchain introduction
 
 Go Syntax and Structure
 - Basic syntax rules and conventions

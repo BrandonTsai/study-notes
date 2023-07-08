@@ -1,32 +1,69 @@
 ---
-title: "#2 Installation and basic toolchain introduction"
+title: "#2 Setting Up the Go Environment"
 author: Brandon Tsai
 ---
 
-Installation
+
+Setting up the Go environment is the first step towards developing Go applications. In this chapter, we will walk through the process of installing Go on macOS, configuring plugins and environment variables for Go in the Visual Studio Code (VSCode) editor, and verifying the installation. We will also introduce some of the basic toolchains that come with Go.
+
+Go Installation
 -----------
 
-1. Download the package from https://golang.org/doc/install
-2. Open the package file you downloaded and follow the prompts to install Go.
-3. Open Terminal and verify that Go is installed by command `go version`
+**Step 1:** Visit the official Go website at and download latest stable release of Go at https://golang.org/doc/install
+**Step 2:** Open the package file you downloaded and follow the prompts to install Go.
+**Step 3:** After the installation is complete, open the Terminal application and verify the Go installation by running the following command: `go version`
 
+
+Configure Environment Variables
+--------------------------------
+
+### GOPATH
+
+GOPATH is a variable that defines the root of your workspace. 
+By default, the workspace directory is a directory that is named go within your user home directory (~/go for Linux and MacOS, %USERPROFILE%/go for Windows). 
+GOPATH stores your code base and all the files that are necessary for your development. You can use another directory as your workspace by configuring GOPATH for different scopes. Open the Terminal and run the following command to set the GOPATH environment variable:
+
+```shell
+export GOPATH=$HOME/go
+```
+To make this setting permanent, you can add this line to your shell configuration file (e.g., .bash_profile, .bashrc, or .zshrc).
+
+GOPATH is the root of your workspace and contains the following folders:
+src/: location of Go source code (for example, .go, .c, .g, .s).
+pkg/: location of compiled package code (for example, .a).
+bin/: location of compiled executable programs built by Go.
+
+To run the compiled executable binary files, you can add the Go binaries directory to your PATH via following command:
+
+```shell
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+```
+
+Similarly, you can add this line to your shell configuration file to make the setting permanent.
 
 
 Go support in VSCode
 --------------------
 
-Install the go extension for VSCode to use feaures like code navigation, IntelliSense, symbol search, formatting and testing.
+Visual Studio Code (VSCode) is a popular code editor that provides excellent support for Go development. To configure VSCode for Go development, follow these steps:
+
+**Step 1:** Install the Go extension for VSCode. Open VSCode and go to the Extensions view by clicking on the square icon on the left sidebar or by pressing Cmd+Shift+X. Search for "Go" and click on the "Go" extension by Google.
 
 [](02-go-extension-vscode.png)
 
+**Step 2:** Click the Install button to install the extension. After the installation, you may be prompted to reload VSCode for the changes to take effect. Click the Reload button.
 
-Refer https://code.visualstudio.com/docs/languages/go for more Hotkey usage of this extension.
+**Step 3:** Open the settings.json file in VSCode. You can access the settings by going to Code -> Preferences -> Settings or by pressing `Cmd` + `, (comma)`. In the settings, search for "go.gopath" and set the value to "$HOME/go". This step ensures that the Go extension in VSCode recognizes your GOPATH.
+
+**Step 4:** Refer https://code.visualstudio.com/docs/languages/go for more usage of this extension.
 
 
-The Go Toolchain
-------------
 
-We will use the example repo to help us understand the CLI commands for Go.
+The Go Toolchain Introduction
+---------------------------
+
+Go comes with a comprehensive toolchain that helps developers build, test, and manage Go projects. The basic toolchain includes various commands and utilities that facilitate Go development.
+We will use the example repo to help us understand some important CLI commands for Go.
 
 ```bash
 $ git clone https://go.googlesource.com/example
@@ -218,3 +255,10 @@ $ go tool trace trace.out
 
 pprof lets you collect CPU profiles, traces, and heap profiles for your Go programs. 
 Please refer https://pkg.go.dev/net/http/pprof for more details.
+
+
+
+Conclusion
+----------
+
+By following these steps, you have successfully set up the Go environment on your Macbook or macOS system, configured VSCode for Go development, and verified the installation by building and running a simple Go program. In the next chapters, we will delve into the essential concepts and techniques of the Go language that every DevOps engineer should know.

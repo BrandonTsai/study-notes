@@ -1,5 +1,5 @@
 ---
-title: "#6 Control Flow"
+title: "#6 Conditionals and Control Flow"
 author: Brandon Tsai
 ---
 
@@ -7,6 +7,7 @@ author: Brandon Tsai
 If statement
 ------------
 
+The `if` statement allows you to execute a block of code conditionally based on a boolean expression. Here's an example:
 
 ```go
 if (condition1) {
@@ -52,10 +53,10 @@ import "fmt"
 func main() {
 	code := "AT"
 	switch code {
-	case "TW", "ROC":
-		fmt.Println("Taiwan")
 	case "AU":
 		fmt.Println("Australia")
+	case "TW", "ROC":
+		fmt.Println("Taiwan")
 	case "AT":
 		{
 			fmt.Println("Austria")
@@ -68,10 +69,10 @@ func main() {
 
 ```
 
-For loop
+For Loops:
 --------
 
-
+The `for` loop is the primary loop construct in Go and allows you to repeatedly execute a block of code.
 You can use `continue` statement to skip running the loop body midway and continue to the next iteration of the loop.
 The `break` statement can be used to stop a loop before its normal termination.
 
@@ -93,4 +94,30 @@ func main() {
 }
 ```
 
-Go does not have `while`
+
+**Notice:** Go does not have `while` loop. you can replace a while loop with a for loop by omitting the initialization and post statements, and only providing the condition. This allows you to achieve the same functionality as a while loop. Here's an example to illustrate the conversion:
+
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+func main() {
+	// While loop equivalent using for loop
+	i := 0
+	for i < 5 {
+		fmt.Println(i)
+		i = getRandomNumber()
+	}
+}
+
+func getRandomNumber() int {
+	rand.Seed(time.Now().UnixNano()) // Initialize random number generator with a unique seed
+	return rand.Intn(10)             // Generate a random number between 0 and 9
+}
+
+```
