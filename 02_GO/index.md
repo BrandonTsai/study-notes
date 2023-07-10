@@ -1,50 +1,49 @@
 "The 20 Basic Concepts of Go Language That a DevOps Engineer Should Know"
 
-Introduction to Go Language
+1: Introduction to Go Language
 - Key features and advantages of using Go
 - Why DevOps engineer should lean how to use Go
 
-Setting Up the Go Environment
+2: Setting Up the Go Environment
 - Configuring Go workspace and environment variables
 - Basic toolchain introduction
 
-Go Syntax and Structure
+3: Go Syntax and Structure
 - Basic syntax rules and conventions
 - Packages, imports, and naming conventions
 
-Variables and Data Types
+4: Variables and Data Types
 - Declaring and initializing variables
 - Understanding Go's basic data types
 
-Control Flow and Loops
+5: Control Flow and Loops
 - Conditionals (if statements)
 - Switch statements and case expressions
 - For loops and range iteration
 
-Arrays, Slices, and Maps
+6: Arrays, Slices, and Maps
 - Working with arrays and slices
 - Utilizing maps for key-value data structures
 
-Functions and Methods
+7: Functions
 - Declaring and calling functions
+
+8: Structs and Custom Types
+- Defining and using structs
+- Creating custom types and type aliases
 - Defining and using methods
 
-
-Pointers and Memory Management
+9: Pointers and Memory Management
 - Understanding pointers and memory addresses
 - Memory management in Go
 
-Error Handling and Panic Recovery
-- Handling errors with the error type
-- Recovering from panics with defer and recover
-
-Structs and Custom Types
-- Defining and using structs
-- Creating custom types and type aliases
-
-Concurrency and Goroutines
+10: Concurrency and Goroutines
 - Introduction to goroutines and concurrency
 - Synchronization with channels and mutexes
+
+11: Error Handling and Panic Recovery
+- Handling errors with the error type
+- Recovering from panics with defer and recover
 
 Logging and Debugging
 - Logging techniques in Go
