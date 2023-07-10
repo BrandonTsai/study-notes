@@ -5,11 +5,12 @@ author: Brandon Tsai
 
 Go has two type of structure to handle list:
 
-- **Array**: Fixed length list of elements. An array isn't immutable by nature; you can't make it constant.
-- **Slice**: flexiable length list that can groe or shrink.
+- **Array**: Fixed length list of elements. 
+- **Slice**: Flexiable length list that can groe or shrink.
 
 Every element in a Array or Slice must be of same types. The elements are stored sequentially and can be accessed using their index
 
+Slice and Arrays are mutable data types by nature, meaning their values can be modified after initialization without re-allocations of memory. You can't make it constant.
 
 Array
 =====
@@ -30,21 +31,6 @@ b := [5]int{2, 4}
 //Letting Go compiler infer the length of the array
 a := [...]int{1, 3, 5, 7, 9}
 
-```
-
-### Pass-By-Value
-
-Array is **pass by value**, this means that the value of elements are copied when assigning one array to another. If you make any changes to this copied array, the original one won’t be affected and will remain unchanged. For example:
-
-
-```go
-a := [5]int{2, 4, 6, 8, 10}
-b := a
-
-b[0] = 0
-
-fmt.Println(a) // output = [2 , 4, 6, 8, 10]
-fmt.Println(b) // output = [0 , 4, 6, 8, 10]
 ```
 
 ### Iterating/Loop:
@@ -93,6 +79,20 @@ for _, raw := range a {
 }
 ```
 
+### Pass-By-Value
+
+Array is **pass by value**, this means that the value of elements are copied when assigning one array to another. If you make any changes to this copied array, the original one won’t be affected and will remain unchanged. For example:
+
+
+```go
+a := [5]int{2, 4, 6, 8, 10}
+b := a
+
+b[0] = 0
+
+fmt.Println(a) // output = [2 , 4, 6, 8, 10]
+fmt.Println(b) // output = [0 , 4, 6, 8, 10]
+```
 
 Slice
 ======
@@ -116,6 +116,15 @@ c := []int{2, 4, 6, 8}
 
 Go doesn't support negative indexing (`a[-1]`) like Python does .
 Use the index `len(a)-1` to access the last element of a slice or array a.
+
+
+```go
+// Get the first element
+fmt.Println(c[0])
+
+// Get the last element
+fmt.Println(c[len(c)-1])
+```
 
 ### Append new elements:
 
@@ -157,6 +166,39 @@ func insert(a []int, index int, value int) []int {
     a = append(a[:index+1], a[index:]...) // index < len(a)
     a[index] = value
     return a
+}
+```
+
+
+### Iterating/Loop:
+
+```go
+s := []int{2, 4, 6, 8, 10}
+
+// get value with index
+for i := 0; i < len(s); i++ {
+    fmt.Println(s[i])
+}
+
+// you can use 'range' operator as well.
+for _, value := range s {
+    fmt.Println(value)
+}
+```
+
+
+### Multidimensional Slices:
+
+```go
+s := [][]int{
+    {2, 4, 6, 8, 10},
+    {1, 3, 5},
+}
+
+for i := 0; i < len(s); i++ {
+    for _, value := range s[i] {
+        fmt.Println(value)
+    }
 }
 ```
 
@@ -237,38 +279,6 @@ fmt.Println(s1, len(s1), reflect.TypeOf(s1).Kind()) //output = [4 2 4 6 8]
 fmt.Println(s2, len(s2), reflect.TypeOf(s2).Kind()) //output = [4 2 4 6]
 ```
 
-
-### Iterating/Loop:
-
-```go
-s := []int{2, 4, 6, 8, 10}
-
-// get value with index
-for i := 0; i < len(s); i++ {
-    fmt.Println(s[i])
-}
-
-// you can use 'range' operator as well.
-for _, value := range s {
-    fmt.Println(value)
-}
-```
-
-
-### Multidimensional Slices:
-
-```go
-s := [][]int{
-    {2, 4, 6, 8, 10},
-    {1, 3, 5},
-}
-
-for i := 0; i < len(s); i++ {
-    for _, value := range s[i] {
-        fmt.Println(value)
-    }
-}
-```
 
 Sort Slices/Arrays
 =================

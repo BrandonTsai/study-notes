@@ -16,21 +16,19 @@ Variables and Data Types
 - Declaring and initializing variables
 - Understanding Go's basic data types
 
-Control Flow and Decision Making
+Control Flow and Loops
 - Conditionals (if statements)
 - Switch statements and case expressions
-
-Loops and Iteration
 - For loops and range iteration
-- Using break and continue statements
+
+Arrays, Slices, and Maps
+- Working with arrays and slices
+- Utilizing maps for key-value data structures
 
 Functions and Methods
 - Declaring and calling functions
 - Defining and using methods
 
-Arrays, Slices, and Maps
-- Working with arrays and slices
-- Utilizing maps for key-value data structures
 
 Pointers and Memory Management
 - Understanding pointers and memory addresses
