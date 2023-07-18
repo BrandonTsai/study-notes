@@ -29,9 +29,9 @@
 - Declaring and calling functions
 
 8: Structs and Custom Types
-- Defining and using structs
 - Creating custom types and type aliases
 - Defining and using methods
+- Defining and using structs
 
 9: Pointers and Memory Management
 - Understanding pointers and memory addresses
