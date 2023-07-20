@@ -1,14 +1,12 @@
 ---
-title: "#11 Interface & any"
+title: "##10-2 Interface"
 author: Brandon Tsai
 ---
 
-Refer https://gobyexample.com/interfaces
-
-
 Go does not have Polymorphism like Object-Oriented language.
-But it provide `Interface` type which defines a set of methods.
-A variable of interface type can hold any value that implements those methods.
+But it provide `Interface` type which defines a set of methods that a custom type must implement to be considered as implementing the interface.
+In other words, an interface allows you to define a abstraction that any custom type can fulfill as long as it implements the required methods.
+
 
 
 ```go
@@ -63,6 +61,8 @@ func main() {
 	r1 := rect{width: 3, height: 4}
 	r2 := rect{width: 10, height: 5}
 	c1 := circle{radius: 5}
+
+	// declare a array of geometry interface which contain any custom type variables that implementing the interface.
 	geometryList := [3]geometry{r1, r2, c1}
 
 	for _, g := range geometryList {
@@ -72,17 +72,6 @@ func main() {
 ```
 
 
-Array of interface objects/values?
--------
-
-can we do following?
-```go
-a := [5]geometry{}
-
-for _, value := range a {
-    measure(value)
-}
-```
 
 
 Exercise
