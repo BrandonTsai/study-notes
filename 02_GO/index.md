@@ -28,10 +28,11 @@
 7: Functions
 - Declaring and calling functions
 
-8: Structs and Custom Types
+8: Custom Type, Struct and Interface
 - Creating custom types and type aliases
 - Defining and using methods
-- Defining and using structs
+- Defining and using struct
+- Defining and using interface
 
 9: Pointers and Memory Management
 - Understanding pointers and memory addresses
@@ -44,23 +45,25 @@
 11: Error Handling and Panic Recovery
 - Handling errors with the error type
 - Recovering from panics with defer and recover
+- Error Handling Best Practices
+  - Effective error handling strategies in Go
+  - Using the errors package and error wrapping
 
-Logging and Debugging
+12: Logging and Debugging
 - Logging techniques in Go
 - Debugging and troubleshooting Go code
 
-File I/O and Serialization
+13: Module and Package Management
+
+14: File I/O and Serialization
 - Reading from and writing to files
 - JSON and XML serialization/deserialization
 - Go Template
 
-Testing and Benchmarking
+15: Improve Code Quality
 - Writing unit tests in Go
 - Profiling and benchmarking code
-
-Error Handling Best Practices
-- Effective error handling strategies in Go
-- Using the errors package and error wrapping
+- Security checking tool
 
 Working with RESTful APIs
 - Making HTTP requests with the net/http package

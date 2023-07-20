@@ -7,8 +7,6 @@ Go does not have Polymorphism like Object-Oriented language.
 But it provide `Interface` type which defines a set of methods that a custom type must implement to be considered as implementing the interface.
 In other words, an interface allows you to define a abstraction that any custom type can fulfill as long as it implements the required methods.
 
-
-
 ```go
 // _Interfaces_ are named collections of method
 // signatures.

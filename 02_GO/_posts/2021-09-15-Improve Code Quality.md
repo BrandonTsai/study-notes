@@ -1,3 +1,8 @@
+---
+title: "#15 Improve Code Quality"
+author: Brandon Tsai
+---
+
 Improve Code Quality
 ======
 
