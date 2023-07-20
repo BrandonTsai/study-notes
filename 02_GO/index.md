@@ -42,42 +42,46 @@
 - Introduction to goroutines and concurrency
 - Synchronization with channels and mutexes
 
-11: Error Handling and Panic Recovery
+11: Module and Package Management
+
+12: Error Handling and Panic Recovery
 - Handling errors with the error type
 - Recovering from panics with defer and recover
 - Error Handling Best Practices
   - Effective error handling strategies in Go
   - Using the errors package and error wrapping
 
-12: Logging and Debugging
+13: Logging and Debugging
 - Logging techniques in Go
 - Debugging and troubleshooting Go code
 
-13: Module and Package Management
-
 14: File I/O and Serialization
 - Reading from and writing to files
-- JSON and XML serialization/deserialization
-- Go Template
+- YAML, JSON and XML serialization/deserialization
 
-15: Improve Code Quality
+15: Go Template
+- Parse files as Go templates
+- Include Template file in your go binary
+
+16: Improve Code Quality
 - Writing unit tests in Go
 - Profiling and benchmarking code
 - Security checking tool
 
-Working with RESTful APIs
-- Making HTTP requests with the net/http package
-- Parsing JSON responses
-
-Interacting with Databases
+17: Interacting with Databases
 - Connecting to databases in Go
 - Executing queries and working with results
 
-Deploying Go Applications
-- Building and packaging Go applications
-- Containerization and deployment strategies
+18: Working with RESTful APIs
+- Making HTTP requests with the net/http package
+- Parsing JSON responses
 
-
-Best Practices and Performance Optimization
+19: Best Practices and Performance Optimization
 - Writing idiomatic and efficient Go code
 - Performance profiling and optimization techniques
+
+20: Deploying Go Applications
+- Building and packaging Go applications
+- Host Private Go repo on Nexus
+- Containerization and deployment strategies
+- CICD with Tekton
